@@ -1,10 +1,7 @@
+import ShippingContainer from "../../components/shipping/ShippingContainer";
+
 function ShippingPage() {
-  return (
-    <section>
-      <h1>Envíos</h1>
-      <p>Gestión de despachos, rutas, transportistas y seguimiento.</p>
-    </section>
-  );
+  return <ShippingContainer />;
 }
 
 export default ShippingPage;
