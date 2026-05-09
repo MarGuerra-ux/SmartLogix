@@ -1,10 +1,7 @@
+import OrdersContainer from "../../components/orders/OrdersContainer";
+
 function OrdersPage() {
-  return (
-    <section>
-      <h1>Pedidos</h1>
-      <p>Gestión de pedidos, estados, validaciones y trazabilidad.</p>
-    </section>
-  );
+  return <OrdersContainer />;
 }
 
 export default OrdersPage;
