@@ -1,0 +1,74 @@
+{
+  "inventory": [
+    {
+      "id": 1,
+      "product": "Notebook Lenovo ThinkPad",
+      "sku": "INV-001",
+      "stock": 25,
+      "status": "Disponible",
+      "warehouse": "Bodega Central"
+    },
+    {
+      "id": 2,
+      "product": "Mouse Logitech G203",
+      "sku": "INV-002",
+      "stock": 8,
+      "status": "Stock bajo",
+      "warehouse": "Bodega Norte"
+    },
+    {
+      "id": 3,
+      "product": "Teclado Mecánico Redragon",
+      "sku": "INV-003",
+      "stock": 0,
+      "status": "Agotado",
+      "warehouse": "Bodega Central"
+    }
+  ],
+  "orders": [
+    {
+      "id": "PED-1001",
+      "customer": "María González",
+      "date": "2026-05-09",
+      "total": 459990,
+      "status": "Pendiente"
+    },
+    {
+      "id": "PED-1002",
+      "customer": "Carlos Muñoz",
+      "date": "2026-05-08",
+      "total": 29990,
+      "status": "Procesando"
+    },
+    {
+      "id": "PED-1003",
+      "customer": "Fernanda Rojas",
+      "date": "2026-05-07",
+      "total": 89990,
+      "status": "Completado"
+    }
+  ],
+  "shipping": [
+    {
+      "id": "ENV-5001",
+      "orderId": "PED-1001",
+      "carrier": "Chilexpress",
+      "tracking": "CLX-998812",
+      "status": "Preparando envío"
+    },
+    {
+      "id": "ENV-5002",
+      "orderId": "PED-1002",
+      "carrier": "Starken",
+      "tracking": "STK-778231",
+      "status": "En tránsito"
+    },
+    {
+      "id": "ENV-5003",
+      "orderId": "PED-1003",
+      "carrier": "Blue Express",
+      "tracking": "BLU-449120",
+      "status": "Entregado"
+    }
+  ]
+}
