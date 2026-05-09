@@ -1,0 +1,257 @@
+/* ===========================
+   orders.css — SmartLogix
+   =========================== */
+
+.orders-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  text-align: left;
+}
+
+/* ---- Header ---- */
+.orders-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.orders-label {
+  color: #38bdf8;
+  font-weight: bold;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  margin: 0 0 0.3rem;
+  display: block;
+}
+
+.orders-header h1 {
+  font-size: 2rem;
+  margin: 0;
+  color: #f8fafc;
+}
+
+.orders-subtitle {
+  color: #94a3b8;
+  margin: 0.4rem 0 0;
+  font-size: 0.95rem;
+}
+
+/* ---- Botón primario ---- */
+.btn-primary {
+  background: #38bdf8;
+  color: #0f172a;
+  border: none;
+  padding: 0.65rem 1.3rem;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.btn-primary:hover {
+  background: #0ea5e9;
+}
+
+/* ---- Stats ---- */
+.orders-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.stat-card {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.9rem;
+  text-align: left;
+}
+
+.stat-icon {
+  font-size: 1.8rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.stat-value {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #f1f5f9;
+  margin: 0;
+  line-height: 1;
+}
+
+.stat-label {
+  color: #94a3b8;
+  font-size: 0.8rem;
+  margin: 0.2rem 0 0;
+}
+
+/* ---- Formulario ---- */
+.orders-form-card {
+  background: #1e293b;
+  border: 1px solid #38bdf8;
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: left;
+}
+
+.orders-form-card h3 {
+  margin: 0 0 1rem;
+  color: #f1f5f9;
+  font-size: 1rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  text-align: left;
+}
+
+.form-group label {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.form-group input,
+.form-group select {
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  color: #e2e8f0;
+  padding: 0.6rem 0.8rem;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #38bdf8;
+}
+
+/* ---- Tabla ---- */
+.orders-table-card {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.orders-table thead tr {
+  background: #0f172a;
+}
+
+.orders-table th {
+  padding: 0.9rem 1.2rem;
+  text-align: left;
+  font-size: 0.8rem;
+  color: #94a3b8;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid #334155;
+}
+
+.orders-table td {
+  padding: 0.9rem 1.2rem;
+  color: #cbd5e1;
+  font-size: 0.9rem;
+  border-bottom: 1px solid #0f172a;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.orders-table tbody tr:hover {
+  background: #253347;
+}
+
+.orders-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ---- ID chip ---- */
+.id-chip {
+  background: #0f172a;
+  border: 1px solid #334155;
+  color: #94a3b8;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-family: monospace;
+}
+
+/* ---- Precio ---- */
+.price-value {
+  color: #22c55e;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* ---- Select de estado ---- */
+.status-select {
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  color: #e2e8f0;
+  padding: 4px 8px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  outline: none;
+  width: 100%;
+}
+
+/* ---- Botones ícono ---- */
+.btn-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: background 0.15s;
+}
+
+.btn-icon:hover {
+  background: #334155;
+}
+
+.btn-delete:hover {
+  background: #3d1515;
+}
+
+/* ---- Empty state ---- */
+.empty-state {
+  padding: 3rem;
+  text-align: center;
+  color: #475569;
+  font-size: 1rem;
+}
