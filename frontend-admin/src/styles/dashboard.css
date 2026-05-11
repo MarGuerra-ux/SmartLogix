@@ -1,38 +1,184 @@
-
-
 .dashboard-page {
-  padding: 2rem;
-  background-color: #0f172a; /* azul oscuro */
-  min-height: 100vh;
-  color: #e2e8f0;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
 }
 
-.dashboard-header {
-  margin-bottom: 2rem;
-}
+/* HEADER */
 
-.dashboard-label {
-  color: #38bdf8;
-  font-weight: bold;
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  margin-bottom: 0.5rem;
-}
-
-.dashboard-header h1 {
-  font-size: 2.5rem;
+.dashboard-header h2 {
   margin: 0;
+  color: #111827;
+  font-size: 2rem;
 }
 
 .dashboard-header p {
-  color: #94a3b8;
-  margin-top: 0.5rem;
-  max-width: 600px;
+  margin-top: 0.4rem;
+  color: #6b7280;
+  font-size: 0.96rem;
 }
 
-.dashboard-grid {
+/* KPI GRID */
+
+.kpi-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+}
+
+.kpi-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 24px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+  transition: 0.2s ease;
+}
+
+.kpi-card:hover {
+  transform: translateY(-2px);
+}
+
+.kpi-card span {
+  display: block;
+  color: #6b7280;
+  font-size: 0.9rem;
+  margin-bottom: 0.7rem;
+  font-weight: 600;
+}
+
+.kpi-card strong {
+  color: #111827;
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.kpi-card.money strong {
+  color: #16a34a;
+}
+
+/* CONTENT */
+
+.dashboard-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.2rem;
+}
+
+/* CARD */
+
+.top-sales-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 24px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+/* TITLES */
+
+.section-title h3 {
+  margin: 0;
+  color: #111827;
+  font-size: 1.4rem;
+}
+
+.section-title p {
+  margin-top: 0.35rem;
+  color: #6b7280;
+  font-size: 0.94rem;
+}
+
+/* LIST */
+
+.top-sales-list {
+  margin-top: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+/* ITEM */
+
+.top-sales-item {
+  display: grid;
+  grid-template-columns: 50px 1fr 160px;
+  align-items: center;
+
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+
+  border-radius: 18px;
+  padding: 1rem 1.1rem;
+
+  transition: 0.18s ease;
+}
+
+.top-sales-item:hover {
+  background: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* RANK */
+
+.ranking-number {
+  width: 36px;
+  height: 36px;
+
+  background: #111827;
+  color: #ffffff;
+
+  border-radius: 50%;
+
+  display: grid;
+  place-items: center;
+
+  font-weight: 700;
+  font-size: 0.92rem;
+}
+
+/* PRODUCT INFO */
+
+.product-info strong {
+  color: #111827;
+  display: block;
+  font-size: 0.95rem;
+}
+
+.product-info span {
+  color: #6b7280;
+  font-size: 0.88rem;
+}
+
+/* TOTAL */
+
+.product-total {
+  color: #16a34a;
+  font-weight: 800;
+  text-align: right;
+  font-size: 1rem;
+}
+
+/* LOADING */
+
+.loading-text {
+  color: #9ca3af;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .kpi-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .top-sales-item {
+    grid-template-columns: 40px 1fr;
+    gap: 1rem;
+  }
+
+  .product-total {
+    text-align: left;
+    grid-column: 2;
+  }
 }

@@ -4,45 +4,586 @@
   gap: 1.5rem;
 }
 
+/* HEADER */
+
 .module-header h2 {
   margin: 0;
-  color: #f8fafc;
-  font-size: 1.8rem;
+  color: #111827;
+  font-size: 1.9rem;
 }
 
 .module-header p {
-  margin-top: 0.4rem;
-  color: #94a3b8;
+  margin-top: 0.35rem;
+  color: #6b7280;
+  font-size: 0.95rem;
 }
+
+/* TABLE */
 
 .data-table {
   width: 100%;
   border-collapse: collapse;
-  background: #1e293b;
-  border-radius: 14px;
+
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 24px;
+
   overflow: hidden;
+
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
 }
 
 .data-table th,
 .data-table td {
-  padding: 1rem;
+  padding: 1rem 1.2rem;
   text-align: left;
-  border-bottom: 1px solid #334155;
+  border-bottom: 1px solid #f1f5f9;
 }
 
 .data-table th {
-  background: #020617;
-  color: #38bdf8;
+  background: #f9fafb;
+  color: #6b7280;
+
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.05em;
 }
 
 .data-table td {
-  color: #e2e8f0;
+  color: #111827;
+  font-size: 0.92rem;
 }
 
+.data-table tbody tr:hover {
+  background: #f9fafb;
+}
+
+.data-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* BADGE */
+
 .badge {
-  padding: 0.35rem 0.7rem;
+  padding: 0.35rem 0.75rem;
   border-radius: 999px;
-  background: #334155;
-  color: #f8fafc;
+
+  background: #f3f4f6;
+  color: #111827;
+
   font-size: 0.8rem;
+  font-weight: 700;
+}
+
+/* FORM */
+
+.module-form {
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 24px;
+
+  padding: 1.5rem;
+
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+.module-form h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #111827;
+}
+
+/* GRID */
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+/* INPUTS */
+
+.form-grid input,
+.form-grid select,
+.form-grid textarea {
+  width: 100%;
+
+  background: #ffffff;
+
+  border: 1px solid #d1d5db;
+
+  color: #111827;
+
+  border-radius: 14px;
+
+  padding: 0.85rem;
+
+  box-sizing: border-box;
+
+  outline: none;
+
+  transition: 0.2s ease;
+}
+
+.form-grid input:focus,
+.form-grid select:focus,
+.form-grid textarea:focus {
+  border-color: #111827;
+}
+
+.form-grid input::placeholder,
+.form-grid textarea::placeholder {
+  color: #9ca3af;
+}
+
+.form-grid textarea {
+  grid-column: span 2;
+  min-height: 90px;
+  resize: vertical;
+}
+
+/* BUTTONS */
+
+.primary-button,
+.secondary-button {
+  background: #111827;
+  color: #ffffff;
+
+  border: none;
+  border-radius: 14px;
+
+  height: 48px;
+  padding: 0 1.3rem;
+
+  font-weight: 700;
+  font-size: 14px;
+
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 0.4rem;
+
+  transition: 0.2s ease;
+}
+
+.primary-button:hover,
+.secondary-button:hover {
+  background: #000000;
+}
+
+/* HEADER ROW */
+
+.module-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+/* TABLE ACTIONS */
+
+.table-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* ACTION BUTTON */
+
+.action-button {
+  border: none;
+  border-radius: 12px;
+
+  padding: 0.65rem 0.9rem;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.15s ease;
+}
+
+.action-button.edit {
+  background: #111827;
+  color: #ffffff;
+}
+
+.action-button.edit:hover {
+  background: #000000;
+}
+
+.action-button.delete {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.action-button.delete:hover {
+  background: #fecaca;
+}
+
+/* DANGER OUTLINE */
+
+.danger-outline-button {
+  background: #ffffff;
+
+  color: #dc2626;
+
+  border: 1px solid #fecaca;
+
+  border-radius: 14px;
+
+  padding: 0.9rem 1.3rem;
+
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.danger-outline-button:hover {
+  background: #fef2f2;
+}
+
+/* MODAL */
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(15, 23, 42, 0.45);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 1.5rem;
+
+  z-index: 1000;
+}
+
+.modal-card {
+  width: 100%;
+  max-width: 850px;
+
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 28px;
+
+  padding: 1.5rem;
+
+  box-shadow: 0 25px 80px rgba(15, 23, 42, 0.18);
+
+  animation: modalAppear 0.22s ease;
+}
+
+/* MODAL HEADER */
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.modal-header h3 {
+  margin: 0;
+  color: #111827;
+}
+
+.modal-header p {
+  margin: 0.35rem 0 0;
+  color: #6b7280;
+}
+
+/* CLOSE */
+
+.modal-close {
+  background: #f3f4f6;
+
+  border: 1px solid #e5e7eb;
+
+  color: #111827;
+
+  width: 38px;
+  height: 38px;
+
+  border-radius: 12px;
+
+  cursor: pointer;
+}
+
+.modal-form {
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+/* MODAL ACTIONS */
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.8rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+/* INVENTORY */
+
+.inventory-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+/* DROPDOWN */
+
+.dropdown-wrapper {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+
+  top: 115%;
+  right: 0;
+
+  min-width: 220px;
+
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 18px;
+
+  padding: 0.5rem;
+
+  z-index: 100;
+
+  box-shadow: 0 15px 45px rgba(15, 23, 42, 0.12);
+}
+
+.dropdown-menu button {
+  width: 100%;
+
+  border: none;
+  background: transparent;
+
+  color: #111827;
+
+  text-align: left;
+
+  padding: 0.85rem 1rem;
+
+  border-radius: 12px;
+
+  cursor: pointer;
+
+  transition: 0.18s ease;
+}
+
+.dropdown-menu button:hover {
+  background: #f3f4f6;
+}
+
+/* SMALL MODAL */
+
+.small-modal-card {
+  max-width: 620px;
+}
+
+/* SINGLE COLUMN */
+
+.single-column-form {
+  grid-template-columns: 1fr;
+}
+
+/* WARNING */
+
+.delete-warning {
+  margin: 0;
+
+  padding: 1rem;
+
+  background: #fef2f2;
+
+  border: 1px solid #fecaca;
+
+  border-radius: 16px;
+
+  color: #dc2626;
+
+  line-height: 1.6;
+}
+
+/* SELECT */
+
+.form-grid select {
+  appearance: none;
+  cursor: pointer;
+}
+
+/* ANIMATION */
+
+@keyframes modalAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* SHIPPING */
+
+.shipping-order-card {
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 18px;
+
+  padding: 1rem;
+
+  color: #111827;
+}
+
+.shipping-order-card p {
+  margin: 0.45rem 0;
+}
+
+.shipping-options-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.shipping-card {
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 24px;
+
+  padding: 1.2rem;
+
+  color: #111827;
+
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+
+  transition: 0.18s ease;
+}
+
+.shipping-card:hover {
+  transform: translateY(-2px);
+}
+
+.shipping-card.selected {
+  border-color: #111827;
+}
+
+.shipping-card h3 {
+  margin: 0;
+  color: #111827;
+  font-size: 1.25rem;
+}
+
+.shipping-card p {
+  margin: 0;
+  color: #6b7280;
+}
+
+.shipping-label {
+  width: fit-content;
+
+  background: #f3f4f6;
+
+  color: #111827;
+
+  border-radius: 999px;
+
+  padding: 0.35rem 0.7rem;
+
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.shipping-price {
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: #111827;
+}
+
+.shipping-time {
+  color: #111827 !important;
+}
+
+.shipping-status {
+  background: #ecfdf5;
+
+  border: 1px solid #bbf7d0;
+
+  color: #15803d;
+
+  border-radius: 16px;
+
+  padding: 1rem;
+
+  font-weight: 700;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .shipping-options-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 860px) {
+
+  .module-header-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .inventory-actions {
+    width: 100%;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-grid textarea {
+    grid-column: span 1;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+  }
+
+  .modal-actions button {
+    width: 100%;
+  }
+
+  .table-actions {
+    flex-direction: column;
+  }
 }

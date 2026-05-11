@@ -1,0 +1,252 @@
+.inventory-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* HEADER */
+
+.inventory-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.inventory-header h1 {
+  margin: 0;
+  color: #111827;
+  font-size: 2rem;
+}
+
+.inventory-subtitle {
+  margin-top: 0.35rem;
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+/* ACTIONS */
+
+.inventory-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+/* BUTTONS */
+
+.btn-primary {
+  background: #111827;
+  color: #ffffff;
+
+  border: none;
+  border-radius: 14px;
+
+  padding: 0.75rem 1.3rem;
+
+  font-weight: 700;
+  font-size: 0.92rem;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: #000000;
+}
+
+.btn-secondary {
+  background: #ffffff;
+  color: #111827;
+
+  border: 1px solid #d1d5db;
+
+  border-radius: 14px;
+
+  padding: 0.75rem 1.3rem;
+
+  font-weight: 700;
+  font-size: 0.92rem;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background: #f9fafb;
+}
+
+/* TABLE CARD */
+
+.inventory-table-card {
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 24px;
+
+  overflow: hidden;
+
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+/* TABLE */
+
+.inventory-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.inventory-table thead tr {
+  background: #f9fafb;
+}
+
+.inventory-table th {
+  padding: 1rem 1.3rem;
+
+  text-align: left;
+
+  color: #6b7280;
+
+  font-size: 0.8rem;
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.05em;
+
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.inventory-table td {
+  padding: 1rem 1.3rem;
+
+  color: #111827;
+
+  font-size: 0.92rem;
+
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.inventory-table tbody tr:hover {
+  background: #f9fafb;
+}
+
+.inventory-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* STOCK BADGES */
+
+.stock-badge {
+  display: inline-flex;
+  align-items: center;
+
+  border-radius: 999px;
+
+  padding: 0.35rem 0.75rem;
+
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.stock-badge.normal {
+  background: #ecfdf5;
+  color: #15803d;
+}
+
+.stock-badge.warning {
+  background: #fefce8;
+  color: #ca8a04;
+}
+
+.stock-badge.critical {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+/* SKU CHIP */
+
+.sku-chip {
+  display: inline-flex;
+  align-items: center;
+
+  background: #f3f4f6;
+
+  color: #111827;
+
+  border-radius: 999px;
+
+  padding: 0.35rem 0.75rem;
+
+  font-size: 0.78rem;
+  font-weight: 700;
+
+  font-family: monospace;
+}
+
+/* ACTION BUTTONS */
+
+.inventory-action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-icon {
+  background: transparent;
+
+  border: none;
+
+  width: 36px;
+  height: 36px;
+
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  transition: 0.18s ease;
+}
+
+.btn-icon:hover {
+  background: #f3f4f6;
+}
+
+.btn-delete:hover {
+  background: #fee2e2;
+}
+
+/* EMPTY */
+
+.empty-state {
+  padding: 3rem;
+
+  text-align: center;
+
+  color: #9ca3af;
+
+  font-size: 1rem;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 860px) {
+
+  .inventory-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .inventory-actions {
+    width: 100%;
+  }
+
+  .inventory-table {
+    display: block;
+    overflow-x: auto;
+  }
+}

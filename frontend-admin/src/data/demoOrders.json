@@ -1,0 +1,72 @@
+[
+  {
+    "orderId": "ORD-1001",
+    "customerName": "Juan Pérez",
+    "customerEmail": "juan.perez@email.com",
+    "productSku": "SKU-1001",
+    "productName": "Audífonos Gamer",
+    "quantity": 1,
+    "destinationCity": "Valparaíso",
+    "weight": "1.2 kg",
+    "selectedCarrier": "Starken",
+    "selectedService": "Envío Normal",
+    "shippingPrice": 5000,
+    "estimatedDays": "5 días hábiles"
+  },
+  {
+    "orderId": "ORD-1002",
+    "customerName": "María Soto",
+    "customerEmail": "maria.soto@email.com",
+    "productSku": "SKU-1002",
+    "productName": "Notebook Lenovo ThinkPad",
+    "quantity": 1,
+    "destinationCity": "Concepción",
+    "weight": "3.5 kg",
+    "selectedCarrier": "Blue Express",
+    "selectedService": "Estándar",
+    "shippingPrice": 6500,
+    "estimatedDays": "2 a 3 días hábiles"
+  },
+  {
+    "orderId": "ORD-1003",
+    "customerName": "Carlos Rojas",
+    "customerEmail": "carlos.rojas@email.com",
+    "productSku": "SKU-1003",
+    "productName": "Teclado Mecánico Redragon",
+    "quantity": 1,
+    "destinationCity": "La Serena",
+    "weight": "1.8 kg",
+    "selectedCarrier": "Chilexpress",
+    "selectedService": "Express",
+    "shippingPrice": 8000,
+    "estimatedDays": "1 día hábil"
+  },
+  {
+    "orderId": "ORD-1004",
+    "customerName": "Fernanda Díaz",
+    "customerEmail": "fernanda.diaz@email.com",
+    "productSku": "SKU-1005",
+    "productName": "Monitor Gamer 27 pulgadas",
+    "quantity": 2,
+    "destinationCity": "Puerto Montt",
+    "weight": "6.4 kg",
+    "selectedCarrier": "Blue Express",
+    "selectedService": "Estándar",
+    "shippingPrice": 6500,
+    "estimatedDays": "2 a 3 días hábiles"
+  },
+  {
+    "orderId": "ORD-1005",
+    "customerName": "Matías Vergara",
+    "customerEmail": "matias.vergara@email.com",
+    "productSku": "SKU-1004",
+    "productName": "Mouse Logitech G203",
+    "quantity": 1,
+    "destinationCity": "Santiago",
+    "weight": "0.6 kg",
+    "selectedCarrier": "Starken",
+    "selectedService": "Envío Normal",
+    "shippingPrice": 5000,
+    "estimatedDays": "5 días hábiles"
+  }
+]

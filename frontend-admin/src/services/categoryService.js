@@ -1,56 +1,56 @@
 import { supabase } from "../lib/supabase";
 
-export async function getProducts() {
+export async function getCategories() {
   const { data, error } = await supabase
-    .from("products")
+    .from("categories")
     .select("*")
-    .order("id", { ascending: true });
+    .order("name", { ascending: true });
 
   if (error) {
-    console.error("Error obteniendo productos:", error);
+    console.error("Error obteniendo categorías:", error);
     return [];
   }
 
   return data;
 }
 
-export async function createProduct(product) {
+export async function createCategory(category) {
   const { data, error } = await supabase
-    .from("products")
-    .insert([product])
+    .from("categories")
+    .insert([category])
     .select();
 
   if (error) {
-    console.error("Error creando producto:", error);
+    console.error("Error creando categoría:", error);
     return { success: false, error };
   }
 
   return { success: true, data };
 }
 
-export async function updateProduct(id, product) {
+export async function updateCategory(id, category) {
   const { data, error } = await supabase
-    .from("products")
-    .update(product)
+    .from("categories")
+    .update(category)
     .eq("id", id)
     .select();
 
   if (error) {
-    console.error("Error actualizando producto:", error);
+    console.error("Error actualizando categoría:", error);
     return { success: false, error };
   }
 
   return { success: true, data };
 }
 
-export async function deleteProduct(id) {
+export async function deleteCategory(id) {
   const { error } = await supabase
-    .from("products")
+    .from("categories")
     .delete()
     .eq("id", id);
 
   if (error) {
-    console.error("Error eliminando producto:", error);
+    console.error("Error eliminando categoría:", error);
     return { success: false, error };
   }
 

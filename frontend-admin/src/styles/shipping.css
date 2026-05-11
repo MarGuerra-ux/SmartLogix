@@ -1,6 +1,6 @@
 /* ===========================
-   shipping.css — SmartLogix
-   =========================== */
+   shipping.css — SmartLogix Light
+=========================== */
 
 .shipping-page {
   display: flex;
@@ -9,7 +9,8 @@
   text-align: left;
 }
 
-/* ---- Header ---- */
+/* HEADER */
+
 .shipping-header {
   display: flex;
   justify-content: space-between;
@@ -18,47 +19,65 @@
   gap: 1rem;
 }
 
-.shipping-label {
+.shipping-label,
+.shipping-kicker {
   color: #38bdf8;
-  font-weight: bold;
-  font-size: 0.85rem;
+  font-weight: 700;
+  font-size: 0.82rem;
   text-transform: uppercase;
   margin: 0 0 0.3rem;
   display: block;
+  letter-spacing: 0.04em;
 }
 
 .shipping-header h1 {
   font-size: 2rem;
   margin: 0;
-  color: #f8fafc;
+  color: #111827;
 }
 
 .shipping-subtitle {
-  color: #94a3b8;
+  color: #6b7280;
   margin: 0.4rem 0 0;
   font-size: 0.95rem;
 }
 
-/* ---- Botón primario ---- */
+/* BUTTONS */
+
 .btn-primary {
-  background: #38bdf8;
-  color: #0f172a;
+  background: #111827;
+  color: #ffffff;
   border: none;
-  padding: 0.65rem 1.3rem;
-  border-radius: 10px;
-  font-weight: bold;
-  font-size: 0.95rem;
+  padding: 0.7rem 1.3rem;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 0.92rem;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: 0.2s ease;
   white-space: nowrap;
-  display: inline-block;
 }
 
 .btn-primary:hover {
-  background: #0ea5e9;
+  background: #000000;
 }
 
-/* ---- Stats ---- */
+.btn-secondary {
+  background: #ffffff;
+  color: #111827;
+  border: 1px solid #d1d5db;
+  border-radius: 14px;
+  padding: 0 1.1rem;
+  height: 44px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background: #f9fafb;
+}
+
+/* STATS */
+
 .shipping-stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -66,49 +85,49 @@
 }
 
 .stat-card {
-  background: #1e293b;
-  border: 1px solid #334155;
-  border-radius: 12px;
-  padding: 1rem 1.2rem;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 22px;
+  padding: 1.2rem 1.4rem;
   display: flex;
-  flex-direction: row;
   align-items: center;
-  gap: 0.9rem;
-  text-align: left;
+  gap: 1rem;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
 }
 
 .stat-icon {
-  font-size: 1.8rem;
+  font-size: 1.9rem;
   line-height: 1;
-  flex-shrink: 0;
 }
 
 .stat-value {
   font-size: 1.6rem;
-  font-weight: 700;
-  color: #f1f5f9;
+  font-weight: 800;
+  color: #111827;
   margin: 0;
   line-height: 1;
 }
 
 .stat-label {
-  color: #94a3b8;
-  font-size: 0.8rem;
-  margin: 0.2rem 0 0;
+  color: #6b7280;
+  font-size: 0.82rem;
+  margin: 0.25rem 0 0;
 }
 
-/* ---- Formulario ---- */
+/* FORM */
+
 .shipping-form-card {
-  background: #1e293b;
-  border: 1px solid #38bdf8;
-  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 24px;
   padding: 1.5rem;
   text-align: left;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
 }
 
 .shipping-form-card h3 {
   margin: 0 0 1rem;
-  color: #f1f5f9;
+  color: #111827;
   font-size: 1rem;
 }
 
@@ -128,19 +147,19 @@
 
 .form-group label {
   font-size: 0.8rem;
-  color: #94a3b8;
-  font-weight: 600;
+  color: #6b7280;
+  font-weight: 700;
   text-transform: uppercase;
 }
 
 .form-group input,
 .form-group select {
-  background: #0f172a;
-  border: 1px solid #334155;
-  border-radius: 8px;
-  color: #e2e8f0;
-  padding: 0.6rem 0.8rem;
-  font-size: 0.9rem;
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  color: #111827;
+  padding: 0.7rem 0.9rem;
+  font-size: 0.92rem;
   outline: none;
   transition: border-color 0.2s;
   width: 100%;
@@ -149,15 +168,17 @@
 
 .form-group input:focus,
 .form-group select:focus {
-  border-color: #38bdf8;
+  border-color: #111827;
 }
 
-/* ---- Tabla ---- */
+/* TABLE */
+
 .shipping-table-card {
-  background: #1e293b;
-  border: 1px solid #334155;
-  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 24px;
   overflow: hidden;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
 }
 
 .shipping-table {
@@ -167,38 +188,38 @@
 }
 
 .shipping-table thead tr {
-  background: #0f172a;
+  background: #f9fafb;
 }
 
 .shipping-table th {
-  padding: 0.9rem 1.2rem;
+  padding: 1rem 1.3rem;
   text-align: left;
   font-size: 0.8rem;
-  color: #94a3b8;
+  color: #6b7280;
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.05em;
-  border-bottom: 1px solid #334155;
+  border-bottom: 1px solid #e5e7eb;
 }
 
 .shipping-table td {
-  padding: 0.9rem 1.2rem;
-  color: #cbd5e1;
-  font-size: 0.9rem;
-  border-bottom: 1px solid #0f172a;
-  text-align: left;
+  padding: 1rem 1.3rem;
+  color: #111827;
+  font-size: 0.92rem;
+  border-bottom: 1px solid #f1f5f9;
   vertical-align: middle;
 }
 
 .shipping-table tbody tr:hover {
-  background: #253347;
+  background: #f9fafb;
 }
 
 .shipping-table tbody tr:last-child td {
   border-bottom: none;
 }
 
-/* ---- Tracking ---- */
+/* TRACKING */
+
 .tracking-view {
   display: flex;
   align-items: center;
@@ -206,36 +227,179 @@
 }
 
 .tracking-view code {
-  background: #0f172a;
-  color: #38bdf8;
-  padding: 2px 8px;
-  border-radius: 6px;
-  font-size: 0.85rem;
+  background: #f3f4f6;
+  color: #111827;
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 0.82rem;
 }
 
-/* ---- Botones ícono ---- */
+/* ICON BUTTONS */
+
 .btn-icon {
-  background: none;
+  background: transparent;
   border: none;
   cursor: pointer;
-  padding: 4px 6px;
-  border-radius: 6px;
+  padding: 6px 8px;
+  border-radius: 10px;
   font-size: 1rem;
-  transition: background 0.15s;
+  transition: 0.15s ease;
 }
 
 .btn-icon:hover {
-  background: #334155;
+  background: #f3f4f6;
 }
 
 .btn-delete:hover {
-  background: #3d1515;
+  background: #fee2e2;
 }
 
-/* ---- Empty state ---- */
+/* EMPTY */
+
 .empty-state {
   padding: 3rem;
   text-align: center;
-  color: #475569;
+  color: #9ca3af;
   font-size: 1rem;
+}
+
+/* DEMO CARD */
+
+.shipping-demo-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 24px;
+  padding: 1.4rem;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+.shipping-demo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.shipping-demo-header h3 {
+  margin: 0;
+  color: #111827;
+}
+
+/* DEMO GRID */
+
+.shipping-demo-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.shipping-demo-grid div {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  padding: 1rem;
+}
+
+.shipping-demo-grid strong {
+  color: #111827;
+  font-size: 0.82rem;
+}
+
+.shipping-demo-grid p {
+  margin: 0.35rem 0 0;
+  color: #6b7280;
+}
+
+/* SHIPPING OPTIONS */
+
+.shipping-options-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.shipping-option-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 22px;
+  padding: 1.2rem;
+  color: #111827;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  transition: 0.2s ease;
+}
+
+.shipping-option-card:hover {
+  transform: translateY(-2px);
+}
+
+.shipping-option-card.recommended {
+  border-color: #111827;
+}
+
+.shipping-option-label {
+  width: fit-content;
+  background: #f3f4f6;
+  color: #111827;
+  border: 1px solid #e5e7eb;
+  border-radius: 999px;
+  padding: 0.35rem 0.7rem;
+  font-size: 0.74rem;
+  font-weight: 700;
+}
+
+.shipping-option-card h4 {
+  margin: 0;
+  color: #111827;
+  font-size: 1.1rem;
+}
+
+.shipping-option-card p {
+  margin: 0;
+  color: #6b7280;
+}
+
+.shipping-option-price {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #111827;
+}
+
+.shipping-option-card small {
+  color: #9ca3af;
+}
+
+/* RECOMMENDATION */
+
+.shipping-recommendation {
+  background: #ecfdf5;
+  border: 1px solid #bbf7d0;
+  color: #15803d;
+  border-radius: 14px;
+  padding: 0.7rem;
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+.shipping-demo-status {
+  background: #ecfdf5;
+  border: 1px solid #bbf7d0;
+  color: #15803d;
+  border-radius: 16px;
+  padding: 1rem;
+  font-weight: 700;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .shipping-stats,
+  .shipping-demo-grid,
+  .shipping-options-grid {
+    grid-template-columns: 1fr;
+  }
 }
