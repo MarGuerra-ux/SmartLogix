@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "title": "Reembolso confirmado",
+    "message": "Se confirmó el reembolso del pedido #54821.",
+    "sender": "Sistema Financiero",
+    "date": "2026-05-10",
+    "time": "09:12 AM",
+    "type": "refund"
+  },
+  {
+    "id": 2,
+    "title": "Producto recibido",
+    "message": "El producto N° AX-449 fue recibido en bodega central.",
+    "sender": "Centro Logístico",
+    "date": "2026-05-10",
+    "time": "08:47 AM",
+    "type": "inventory"
+  },
+  {
+    "id": 3,
+    "title": "Nuevo pedido creado",
+    "message": "El cliente Juan Pérez generó el pedido #88214.",
+    "sender": "Módulo Ventas",
+    "date": "2026-05-09",
+    "time": "10:30 PM",
+    "type": "order"
+  },
+  {
+    "id": 4,
+    "title": "Envío actualizado",
+    "message": "El envío #77291 cambió a estado: En ruta.",
+    "sender": "Sistema de Envíos",
+    "date": "2026-05-09",
+    "time": "06:14 PM",
+    "type": "shipping"
+  },
+  {
+    "id": 5,
+    "title": "Stock crítico",
+    "message": "El producto Mouse Gamer GX10 tiene stock bajo.",
+    "sender": "Inventario",
+    "date": "2026-05-09",
+    "time": "03:02 PM",
+    "type": "warning"
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "name": "Mouse Gamer GX10",
+    "sku": "MOU-GX10",
+    "category": "Periféricos",
+    "brand": "Logitech",
+    "price": 29990,
+    "stock": 14,
+    "status": "Activo",
+    "description": "Mouse gamer ergonómico con iluminación RGB y sensor de alta precisión.",
+    "image": "https://placehold.co/600x400?text=Mouse+Gamer"
+  },
+  {
+    "id": 2,
+    "name": "Teclado Mecánico K55",
+    "sku": "KEY-K55",
+    "category": "Periféricos",
+    "brand": "Corsair",
+    "price": 49990,
+    "stock": 8,
+    "status": "Activo",
+    "description": "Teclado mecánico retroiluminado ideal para gaming y productividad.",
+    "image": "https://placehold.co/600x400?text=Teclado"
+  },
+  {
+    "id": 3,
+    "name": "Monitor LG 27 pulgadas",
+    "sku": "MON-LG27",
+    "category": "Monitores",
+    "brand": "LG",
+    "price": 189990,
+    "stock": 3,
+    "status": "Stock bajo",
+    "description": "Monitor Full HD de 27 pulgadas con panel IPS y buena reproducción de color.",
+    "image": "https://placehold.co/600x400?text=Monitor+LG"
+  },
+  {
+    "id": 4,
+    "name": "Notebook Lenovo IdeaPad",
+    "sku": "NB-LEN15",
+    "category": "Computadores",
+    "brand": "Lenovo",
+    "price": 529990,
+    "stock": 5,
+    "status": "Activo",
+    "description": "Notebook de 15 pulgadas para trabajo, estudio y tareas administrativas.",
+    "image": "https://placehold.co/600x400?text=Notebook"
+  },
+  {
+    "id": 5,
+    "name": "Audífonos HyperSound X",
+    "sku": "AUD-HSX",
+    "category": "Audio",
+    "brand": "HyperSound",
+    "price": 39990,
+    "stock": 0,
+    "status": "Sin stock",
+    "description": "Audífonos con micrófono integrado y sonido envolvente.",
+    "image": "https://placehold.co/600x400?text=Audifonos"
+  }
+]

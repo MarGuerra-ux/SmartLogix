@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "name": "Marco Guerra",
+    "email": "marco@smartlogix.cl",
+    "phone": "+56 9 8765 4321",
+    "city": "Santiago",
+    "totalPurchases": 1,
+    "totalSpent": 29990,
+    "lastPurchase": "2026-05-10",
+    "status": "Compra Inicial"
+  },
+  {
+    "id": 2,
+    "name": "Ana López",
+    "email": "ana.lopez@gmail.com",
+    "phone": "+56 9 5555 1111",
+    "city": "Valparaíso",
+    "totalPurchases": 2,
+    "totalSpent": 89990,
+    "lastPurchase": "2026-05-08",
+    "status": "Segunda Compra"
+  },
+  {
+    "id": 3,
+    "name": "Carlos Méndez",
+    "email": "carlos@empresa.cl",
+    "phone": "+56 9 4444 7777",
+    "city": "Concepción",
+    "totalPurchases": 8,
+    "totalSpent": 459990,
+    "lastPurchase": "2026-05-11",
+    "status": "Compra Frecuente"
+  },
+  {
+    "id": 4,
+    "name": "Fernanda Ruiz",
+    "email": "fernanda.ruiz@gmail.com",
+    "phone": "+56 9 3333 9999",
+    "city": "La Serena",
+    "totalPurchases": 21,
+    "totalSpent": 1849990,
+    "lastPurchase": "2026-05-09",
+    "status": "Super Comprador"
+  },
+  {
+    "id": 5,
+    "name": "Diego Torres",
+    "email": "diego.torres@gmail.com",
+    "phone": "+56 9 2222 8888",
+    "city": "Temuco",
+    "totalPurchases": 3,
+    "totalSpent": 120000,
+    "lastPurchase": "2025-12-01",
+    "status": "Inactivo"
+  }
+]
