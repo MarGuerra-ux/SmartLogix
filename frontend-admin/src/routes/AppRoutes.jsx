@@ -6,22 +6,22 @@ import DashboardPage from "../pages/dashboard/DashboardPage";
 import ActivityPage from "../pages/activity/ActivityPage";
 
 import InventoryPage from "../pages/inventory/InventoryPage";
+import CategoriesPage from "../pages/categories/CategoriesPage";
+import ProductsPage from "../pages/products/ProductsPage";
+
 import OrdersPage from "../pages/orders/OrdersPage";
 import ShippingPage from "../pages/shipping/ShippingPage";
-import ProductsPage from "../pages/products/ProductsPage";
+import RefundsPage from "../pages/refunds/RefundsPage";
 
 import ClientsPage from "../pages/clients/ClientsPage";
 
 import SalesPage from "../pages/sales/SalesPage";
 import DailyCashPage from "../pages/daily-cash/DailyCashPage";
-
 import MetricsPage from "../pages/metrics/MetricsPage";
 import TopSalesPage from "../pages/top-sales/TopSalesPage";
 
 import UsersPage from "../pages/users/UsersPage";
 import SettingsPage from "../pages/settings/SettingsPage";
-
-import RefundsPage from "../pages/refunds/RefundsPage";
 
 function AppRoutes() {
   return (
@@ -34,16 +34,17 @@ function AppRoutes() {
           <Route path="/activity" element={<ActivityPage />} />
 
           <Route path="/inventory" element={<InventoryPage />} />
+          <Route path="/categories" element={<CategoriesPage />} />
+          <Route path="/products" element={<ProductsPage />} />
+
           <Route path="/orders" element={<OrdersPage />} />
           <Route path="/shipping" element={<ShippingPage />} />
-          <Route path="/products" element={<ProductsPage />} />
           <Route path="/refunds" element={<RefundsPage />} />
 
           <Route path="/clients" element={<ClientsPage />} />
 
           <Route path="/sales" element={<SalesPage />} />
           <Route path="/daily-cash" element={<DailyCashPage />} />
-
           <Route path="/metrics" element={<MetricsPage />} />
           <Route path="/top-sales" element={<TopSalesPage />} />
 

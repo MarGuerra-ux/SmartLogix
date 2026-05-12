@@ -1,47 +1,56 @@
 import { supabase } from "../lib/supabase";
 
 export async function getDashboardData() {
-  const { data: orders } = await supabase.from("orders").select("*");
-  const { data: shipments } = await supabase.from("shipments").select("*");
+  const { data: orders = [] } = await supabase
+    .from("orders")
+    .select("*");
 
-  const { data: orderItems } = await supabase
-    .from("order_items")
-    .select(`
-      quantity,
-      subtotal,
-      products (
-        name
-      )
-    `);
+  const { data: products = [] } = await supabase
+    .from("products")
+    .select("*");
+
+  const { data: shipments = [] } = await supabase
+    .from("shipping_quotes")
+    .select("*");
 
   const today = new Date().toISOString().split("T")[0];
 
-  const ordersToday = orders?.filter((order) =>
-    order.order_date?.startsWith(today)
-  ) || [];
+  const ordersToday = orders.filter((order) =>
+    order.created_at?.startsWith(today)
+  );
 
-  const pendingOrders = orders?.filter(
+  const pendingOrders = orders.filter(
     (order) => order.status === "Pendiente"
-  ) || [];
+  );
 
-  const completedOrders = orders?.filter(
-    (order) => order.status === "Completado"
-  ) || [];
+  const completedOrders = orders.filter(
+    (order) => order.status === "Aprobado"
+  );
 
-  const totalSales =
-    orders?.reduce((sum, order) => sum + Number(order.total_amount), 0) || 0;
+  const inTransitShipments = shipments.filter(
+    (shipment) => shipment.status === "En tránsito"
+  );
 
-  const dailyCash =
-    ordersToday.reduce((sum, order) => sum + Number(order.total_amount), 0) || 0;
+  const totalSales = orders.reduce(
+    (sum, order) => sum + Number(order.total_amount || 0),
+    0
+  );
 
-  const inTransitShipments = shipments?.filter(
-    (shipment) => shipment.status === "En Tránsito"
-  ) || [];
+  const dailyCash = ordersToday.reduce(
+    (sum, order) => sum + Number(order.total_amount || 0),
+    0
+  );
 
   const salesMap = {};
 
-  orderItems?.forEach((item) => {
-    const productName = item.products?.name || "Producto desconocido";
+  orders.forEach((order) => {
+    const product = products.find(
+      (item) => item.id === Number(order.product_id)
+    );
+
+    const productName = product?.name || "Producto desconocido";
+    const quantity = Number(order.quantity || 1);
+    const total = Number(order.total_amount || 0);
 
     if (!salesMap[productName]) {
       salesMap[productName] = {
@@ -51,8 +60,8 @@ export async function getDashboardData() {
       };
     }
 
-    salesMap[productName].quantity += Number(item.quantity);
-    salesMap[productName].total += Number(item.subtotal);
+    salesMap[productName].quantity += quantity;
+    salesMap[productName].total += total;
   });
 
   const topSales = Object.values(salesMap)

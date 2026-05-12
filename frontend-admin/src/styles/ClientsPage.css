@@ -9,24 +9,120 @@
 .clients-toolbar {
   display: flex;
   width: 100%;
+  gap: 1rem;
 }
 
 .clients-toolbar input {
   flex: 1;
-  padding: 0.9rem 1rem;
+
+  padding: 0.95rem 1rem;
+
   border: 1px solid #dbe3ef;
+
   border-radius: 14px;
-  background: white;
+
+  background: #ffffff;
+
+  color: #111827;
+
+  outline: none;
+}
+
+.clients-toolbar input::placeholder {
+  color: #6b7280;
+}
+
+.clients-toolbar input:focus {
+  border-color: #9ca3af;
 }
 
 .clients-toolbar button,
-.client-view-button {
+.client-view-button,
+.client-modal-actions button {
   border: none;
+
   border-radius: 12px;
+
   padding: 0.75rem 1rem;
-  background: #0f172a;
+
+  background: #111827;
+
   color: white;
+
   font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.18s ease;
+}
+
+.clients-toolbar button:hover,
+.client-view-button:hover,
+.client-modal-actions button:hover {
+  background: #000000;
+}
+
+/* FORM */
+
+.client-form {
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 24px;
+
+  padding: 1.5rem;
+
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 1rem;
+
+  box-shadow:
+    0 2px 8px
+    rgba(15, 23, 42, 0.04);
+}
+
+.client-form input {
+  background: #f9fafb;
+
+  border: 1px solid #dbe3ef;
+
+  color: #111827;
+
+  padding: 0.95rem 1rem;
+
+  border-radius: 14px;
+
+  outline: none;
+}
+
+.client-form input::placeholder {
+  color: #6b7280;
+}
+
+.client-form input:focus {
+  background: #ffffff;
+
+  border-color: #9ca3af;
+}
+
+.client-form button {
+  grid-column: span 2;
+
+  border: none;
+
+  background: #111827;
+
+  color: white;
+
+  padding: 1rem;
+
+  border-radius: 14px;
+
+  font-weight: 700;
+
   cursor: pointer;
 }
 
@@ -35,211 +131,257 @@
 .clients-list {
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 1rem;
 }
 
 .client-card {
   display: grid;
-  grid-template-columns: 56px 1.5fr 1fr 0.8fr 1fr 1.1fr auto;
+
+  grid-template-columns:
+    56px
+    1.5fr
+    1fr
+    1fr
+    1fr
+    0.8fr
+    auto;
+
   align-items: center;
+
   gap: 1rem;
-  background: white;
-  border-radius: 18px;
-  padding: 1rem;
-  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.06);
-  transition: 0.2s;
+
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 20px;
+
+  padding: 1rem 1.2rem;
+
+  transition: 0.18s ease;
+
+  box-shadow:
+    0 2px 8px
+    rgba(15, 23, 42, 0.04);
 }
 
 .client-card:hover {
-  background: #f8fafc;
+  border-color: #cbd5e1;
+
+  transform: translateY(-2px);
 }
 
 .client-avatar {
   width: 46px;
+
   height: 46px;
+
   border-radius: 14px;
-  background: #eef4ff;
+
+  background: #eef2ff;
+
   color: #1d4ed8;
+
   display: grid;
+
   place-items: center;
+
   font-weight: 900;
 }
 
 .client-main-info strong {
   display: block;
-  color: #0f172a;
+
+  color: #111827;
 }
 
 .client-main-info span,
 .client-city,
 .client-purchases,
 .client-total {
-  color: #64748b;
-  font-size: 0.9rem;
+  color: #6b7280;
+
+  font-size: 0.92rem;
 }
 
 /* STATUS */
 
 .client-status {
   display: inline-flex;
+
   align-items: center;
+
   justify-content: center;
+
   border-radius: 999px;
-  padding: 0.4rem 0.75rem;
+
+  padding: 0.45rem 0.8rem;
+
   font-size: 0.78rem;
+
   font-weight: 800;
+
   text-align: center;
 }
 
-.client-status.compra-inicial {
-  background: #dbeafe;
-  color: #1d4ed8;
-}
-
-.client-status.segunda-compra {
-  background: #fef3c7;
-  color: #92400e;
-}
-
-.client-status.compra-frecuente {
+.client-status.activo {
   background: #dcfce7;
+
   color: #166534;
-}
-
-.client-status.super-comprador {
-  background: #ede9fe;
-  color: #6d28d9;
-}
-
-.client-status.inactivo {
-  background: #fee2e2;
-  color: #991b1b;
 }
 
 /* MODAL */
 
 .client-modal-backdrop {
   position: fixed;
+
   inset: 0;
-  background: rgba(15, 23, 42, 0.55);
+
+  background: rgba(15, 23, 42, 0.45);
+
+  backdrop-filter: blur(3px);
+
   display: grid;
+
   place-items: center;
+
   z-index: 100;
 }
 
 .client-modal {
   width: min(900px, 94vw);
-  background: white;
-  border-radius: 24px;
+
+  background: #ffffff;
+
+  border-radius: 26px;
+
   padding: 1.5rem;
+
   display: grid;
+
   grid-template-columns: 320px 1fr;
+
   gap: 1.5rem;
+
   position: relative;
+
   overflow: hidden;
+
+  box-shadow:
+    0 12px 32px
+    rgba(15, 23, 42, 0.16);
 }
 
 .client-modal-close {
   position: absolute;
+
   top: 1rem;
+
   right: 1rem;
+
   border: none;
-  background: #111827;
-  color: white;
+
+  background: #f3f4f6;
+
+  color: #111827;
+
   border-radius: 999px;
+
   width: 42px;
+
   height: 42px;
+
   cursor: pointer;
+
   z-index: 10;
 }
 
 .client-modal-left {
   background: #f8fafc;
+
+  border: 1px solid #e5e7eb;
+
   border-radius: 20px;
+
   padding: 1.5rem;
+
   text-align: center;
 }
 
 .client-modal-avatar {
   width: 90px;
+
   height: 90px;
+
   margin: 0 auto 1rem;
+
   border-radius: 24px;
-  background: #eef4ff;
+
+  background: #eef2ff;
+
   color: #1d4ed8;
+
   display: grid;
+
   place-items: center;
+
   font-size: 2rem;
+
   font-weight: 900;
 }
 
 .client-modal-left h2 {
   margin: 0;
-  color: #0f172a;
+
+  color: #111827;
 }
 
 .client-modal-left p {
-  color: #64748b;
-}
-
-.client-modal-summary {
-  margin-top: 1.5rem;
-  display: grid;
-  gap: 0.4rem;
-}
-
-.client-modal-summary strong {
-  color: #0f172a;
-  font-size: 1.4rem;
-}
-
-.client-modal-summary span {
-  color: #64748b;
-  font-size: 0.9rem;
-  margin-bottom: 0.8rem;
+  color: #6b7280;
 }
 
 .client-modal-right {
   background: #f8fafc;
+
+  border: 1px solid #e5e7eb;
+
   border-radius: 20px;
+
   padding: 2rem;
 }
 
 .client-modal-right h3 {
   margin: 0 0 1rem;
-  color: #0f172a;
+
+  color: #111827;
+
   font-size: 1.6rem;
 }
 
 .client-detail-grid {
   display: grid;
+
   grid-template-columns: 1fr 1fr;
+
   gap: 0.9rem;
 }
 
 .client-detail-grid span {
-  color: #64748b;
+  color: #6b7280;
 }
 
 .client-detail-grid strong {
-  color: #0f172a;
+  color: #111827;
 }
 
 .client-modal-actions {
   display: flex;
-  gap: 0.8rem;
-  margin-top: 2rem;
-  flex-wrap: wrap;
-}
 
-.client-modal-actions button {
-  border: none;
-  border-radius: 12px;
-  padding: 0.8rem 1rem;
-  background: #0f172a;
-  color: white;
-  font-weight: 700;
-  cursor: pointer;
+  gap: 0.8rem;
+
+  margin-top: 2rem;
+
+  flex-wrap: wrap;
 }
 
 /* RESPONSIVE */
@@ -259,7 +401,26 @@
 
   .client-modal {
     grid-template-columns: 1fr;
+
     max-height: 90vh;
+
     overflow-y: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .clients-toolbar,
+  .client-form {
+    grid-template-columns: 1fr;
+
+    flex-direction: column;
+  }
+
+  .client-form button {
+    grid-column: span 1;
+  }
+
+  .client-detail-grid {
+    grid-template-columns: 1fr;
   }
 }

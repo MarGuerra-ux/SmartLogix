@@ -1,4 +1,4 @@
-import ShippingContainer from "../../components/shipping/ShippingContainer";
+import ShippingContainer from "./ShippingContainer";
 
 function ShippingPage() {
   return <ShippingContainer />;

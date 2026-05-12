@@ -1,15 +1,25 @@
 import "../../styles/ActivityPage.css";
+import "../../styles/ModulePages.css";
+
 import activities from "../../data/activities.json";
-import SectionHero from "../../components/SectionHero";
 
 export default function ActivityPage() {
   return (
     <div className="activity-page">
-      <SectionHero
-        icon="🔔"
-        title="Actividad Reciente"
-        description="Registro de movimientos recientes del sistema: pedidos creados, productos actualizados y envíos modificados."
-      />
+      <div className="module-page-header centered">
+        <span className="module-page-kicker">
+          MÓDULO
+        </span>
+
+        <h1 className="module-page-title">
+          Actividad Reciente
+        </h1>
+
+        <p className="module-page-description">
+          Registro de movimientos recientes del sistema: pedidos creados,
+          productos actualizados y envíos modificados.
+        </p>
+      </div>
 
       <div className="activity-list">
         {activities.map((activity) => (
@@ -22,7 +32,9 @@ export default function ActivityPage() {
               </span>
             </div>
 
-            <p className="activity-message">{activity.message}</p>
+            <p className="activity-message">
+              {activity.message}
+            </p>
 
             <div className="activity-footer">
               <span>📨 {activity.sender}</span>

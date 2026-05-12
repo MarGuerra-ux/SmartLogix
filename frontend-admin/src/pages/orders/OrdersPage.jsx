@@ -1,7 +1,11 @@
 import OrdersContainer from "../../components/orders/OrdersContainer";
 
 function OrdersPage() {
-  return <OrdersContainer />;
+  return (
+    <section className="module-page">
+      <OrdersContainer />
+    </section>
+  );
 }
 
 export default OrdersPage;

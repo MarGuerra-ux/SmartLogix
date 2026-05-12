@@ -1,112 +1,337 @@
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import {
-  demoOrder,
-  demoShippingOptions,
-  registerSelectedShipping,
+  getShipments,
+  createDemoShipment,
+  deleteShipment,
+  updateShipmentStatus,
 } from "../../services/shippingService";
 
-import "../../styles/modulespages.css";
+import { getProducts } from "../../services/productService";
+import { createRefundFromShipment } from "../../services/refundService";
+
+import "../../styles/ModulePages.css";
 
 function ShippingContainer() {
-  const [selectedOption, setSelectedOption] = useState(null);
-  const [status, setStatus] = useState("");
+  const [shipments, setShipments] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedShipment, setSelectedShipment] = useState(null);
 
-  const handleSelectShipping = async (option) => {
-    setSelectedOption(option);
+  async function loadShipments() {
+    const data = await getShipments();
+    setShipments(data);
+  }
 
-    setStatus("Procesando pago demo...");
+  async function loadProducts() {
+    const data = await getProducts();
+    setProducts(data);
+  }
 
-    setTimeout(async () => {
-      const result = await registerSelectedShipping(option);
+  useEffect(() => {
+    loadShipments();
+    loadProducts();
+  }, []);
 
-      if (result.success) {
-        setStatus(
-          `Pago aprobado. Envío registrado con ${option.carrierName}.`
+  function getShipmentProduct(shipment) {
+    return products.find(
+      (product) =>
+        product.name?.toLowerCase() ===
+        shipment.product_name?.toLowerCase()
+    );
+  }
+
+  function getStockInfo(shipment) {
+    const product = getShipmentProduct(shipment);
+
+    if (!product) {
+      return {
+        hasStock: false,
+        stock: 0,
+        message: "Producto no encontrado en inventario.",
+      };
+    }
+
+    const stock = Number(product.stock_units || 0);
+
+    return {
+      hasStock: stock > 0,
+      stock,
+      message:
+        stock > 0
+          ? `Hay un stock disponible de ${stock} unidades.`
+          : "Este producto no tiene stock. No se puede aceptar.",
+    };
+  }
+
+  async function handleCreateDemo() {
+    const result = await createDemoShipment();
+
+    if (result.success && result.data?.[0]) {
+      setSelectedShipment(result.data[0]);
+    }
+
+    loadShipments();
+  }
+
+  async function handleConfirmShipment(shipment) {
+    const stockInfo = getStockInfo(shipment);
+
+    if (!stockInfo.hasStock) return;
+
+    await updateShipmentStatus(shipment.id, "En tránsito");
+    setSelectedShipment(null);
+    loadShipments();
+  }
+
+  async function handleDeliverShipment(id) {
+    await updateShipmentStatus(id, "Entregado");
+    setSelectedShipment(null);
+    loadShipments();
+  }
+
+  async function handleRejectShipment(shipment) {
+    await createRefundFromShipment(shipment);
+    await deleteShipment(shipment.id);
+
+    setSelectedShipment(null);
+    loadShipments();
+  }
+
+  const preparing = shipments.filter(
+    (shipment) => shipment.status === "Preparando envío"
+  ).length;
+
+  const inTransit = shipments.filter(
+    (shipment) => shipment.status === "En tránsito"
+  ).length;
+
+  const delivered = shipments.filter(
+    (shipment) => shipment.status === "Entregado"
+  ).length;
+
+  const filteredShipments = useMemo(() => {
+    const search = searchTerm.toLowerCase();
+
+    return shipments
+      .filter((shipment) => {
+        return (
+          shipment.tracking_code?.toLowerCase().includes(search) ||
+          shipment.destination?.toLowerCase().includes(search) ||
+          shipment.status?.toLowerCase().includes(search) ||
+          shipment.customer_name?.toLowerCase().includes(search)
         );
-      } else {
-        setStatus("Error registrando envío.");
-      }
-    }, 1500);
-  };
+      })
+      .sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+  }, [shipments, searchTerm]);
+
+  const selectedStockInfo = selectedShipment
+    ? getStockInfo(selectedShipment)
+    : null;
 
   return (
     <section className="module-page">
-      <div className="module-header-row">
-        <div className="module-header">
-          <h2>🚚 Gestión de Envíos</h2>
+      <div className="module-page-header centered">
+        <span className="module-page-kicker">MÓDULO DE LOGÍSTICA</span>
 
-          <p>
-            Caso de prueba con integración logística multicourier.
-          </p>
+        <h1 className="module-page-title">Envíos</h1>
+
+        <p className="module-page-description">
+          Coordina despachos, actualiza tracking y monitorea estados en tiempo real.
+        </p>
+      </div>
+
+      <div className="module-actions-row">
+        <button className="secondary-button" onClick={handleCreateDemo}>
+          🧪 Ejecutar Pedido Demo
+        </button>
+      </div>
+
+      <div className="shipping-stats-grid">
+        <div className="shipping-stat-card">
+          <span>📦</span>
+          <div>
+            <strong>{shipments.length}</strong>
+            <p>Total Envíos</p>
+          </div>
+        </div>
+
+        <div className="shipping-stat-card">
+          <span>🔧</span>
+          <div>
+            <strong>{preparing}</strong>
+            <p>Preparando</p>
+          </div>
+        </div>
+
+        <div className="shipping-stat-card">
+          <span>🚚</span>
+          <div>
+            <strong>{inTransit}</strong>
+            <p>En tránsito</p>
+          </div>
+        </div>
+
+        <div className="shipping-stat-card">
+          <span>✅</span>
+          <div>
+            <strong>{delivered}</strong>
+            <p>Entregados</p>
+          </div>
         </div>
       </div>
 
       <div className="module-form">
-        <h3>Pedido recibido</h3>
-
-        <div className="shipping-order-card">
-          <p>
-            <strong>Orden:</strong> {demoOrder.orderId}
-          </p>
-
-          <p>
-            <strong>Cliente:</strong> {demoOrder.customerName}
-          </p>
-
-          <p>
-            <strong>Producto:</strong> {demoOrder.productName}
-          </p>
-
-          <p>
-            <strong>Destino:</strong> {demoOrder.destinationCity}
-          </p>
-
-          <p>
-            <strong>Peso:</strong> {demoOrder.weight}
-          </p>
-        </div>
+        <input
+          type="text"
+          placeholder="Buscar tracking, cliente, destino o estado..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
       </div>
 
-      <div className="shipping-options-grid">
-        {demoShippingOptions.map((option) => (
+      <div className="shipping-table-wrapper">
+        <table className="shipping-table">
+          <thead>
+            <tr>
+              <th>N° TRACKING</th>
+              <th>FECHA / HORA</th>
+              <th>CLIENTE</th>
+              <th>DESTINO</th>
+              <th>ESTADO</th>
+              <th>ACCIONES</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {filteredShipments.map((shipment) => (
+              <tr key={shipment.id}>
+                <td>
+                  <span className="tracking-pill">
+                    {shipment.tracking_code}
+                  </span>
+                </td>
+
+                <td>
+                  {shipment.created_at
+                    ? new Date(shipment.created_at).toLocaleString("es-CL")
+                    : "Sin fecha"}
+                </td>
+
+                <td>{shipment.customer_name || "Cliente no registrado"}</td>
+                <td>{shipment.destination || "Sin destino"}</td>
+
+                <td>
+                  <span
+                    className={`shipping-status ${
+                      shipment.status === "Entregado"
+                        ? "delivered"
+                        : shipment.status === "En tránsito"
+                        ? "transit"
+                        : "preparing"
+                    }`}
+                  >
+                    {shipment.status}
+                  </span>
+                </td>
+
+                <td>
+                  <button
+                    className="table-btn approve"
+                    onClick={() => setSelectedShipment(shipment)}
+                  >
+                    Ver detalles
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {selectedShipment && (
+        <div
+          className="modal-backdrop"
+          onClick={() => setSelectedShipment(null)}
+        >
           <article
-            key={option.carrierName}
-            className={`shipping-card ${
-              selectedOption?.carrierName === option.carrierName
-                ? "selected"
-                : ""
-            }`}
+            className="modal-card small-modal-card"
+            onClick={(e) => e.stopPropagation()}
           >
-            <span className="shipping-label">
-              {option.label}
-            </span>
+            <div className="modal-header">
+              <div>
+                <span className="module-page-kicker">DETALLE DEL ENVÍO</span>
+                <h3>{selectedShipment.tracking_code}</h3>
+                <p>Confirma el avance del envío o rechaza el registro.</p>
+              </div>
 
-            <h3>{option.carrierName}</h3>
-
-            <p>{option.serviceName}</p>
-
-            <div className="shipping-price">
-              ${option.price.toLocaleString("es-CL")}
+              <button
+                className="modal-close"
+                onClick={() => setSelectedShipment(null)}
+              >
+                ✕
+              </button>
             </div>
 
-            <p className="shipping-time">
-              Entrega: {option.estimatedDays}
-            </p>
+            <div className="client-detail-grid">
+              <span>Cliente</span>
+              <strong>{selectedShipment.customer_name || "Sin cliente"}</strong>
 
-            <button
-              className="primary-button"
-              onClick={() => handleSelectShipping(option)}
-            >
-              Elegir transportista
-            </button>
+              <span>Producto</span>
+              <strong>{selectedShipment.product_name || "Sin producto"}</strong>
+
+              <span>Stock</span>
+              <strong
+                style={{
+                  color: selectedStockInfo?.hasStock ? "#166534" : "#dc2626",
+                }}
+              >
+                {selectedStockInfo?.message}
+              </strong>
+
+              <span>Destino</span>
+              <strong>{selectedShipment.destination || "Sin destino"}</strong>
+
+              <span>Transportista</span>
+              <strong>
+                {selectedShipment.carrier_name || "Sin transportista"}
+              </strong>
+
+              <span>Servicio</span>
+              <strong>{selectedShipment.service_name || "Sin servicio"}</strong>
+
+              <span>Estado</span>
+              <strong>{selectedShipment.status}</strong>
+            </div>
+
+            <div className="modal-actions">
+              {selectedShipment.status === "Preparando envío" && (
+                <button
+                  className="primary-button"
+                  disabled={!selectedStockInfo?.hasStock}
+                  onClick={() => handleConfirmShipment(selectedShipment)}
+                >
+                  Confirmar despacho
+                </button>
+              )}
+
+              {selectedShipment.status === "En tránsito" && (
+                <button
+                  className="primary-button"
+                  onClick={() => handleDeliverShipment(selectedShipment.id)}
+                >
+                  Marcar entregado
+                </button>
+              )}
+
+              <button
+                className="danger-outline-button"
+                onClick={() => handleRejectShipment(selectedShipment)}
+              >
+                Rechazar / enviar a reembolso
+              </button>
+            </div>
           </article>
-        ))}
-      </div>
-
-      {status && (
-        <div className="shipping-status">
-          {status}
         </div>
       )}
     </section>

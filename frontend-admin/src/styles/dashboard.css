@@ -6,16 +6,23 @@
 
 /* HEADER */
 
-.dashboard-header h2 {
-  margin: 0;
-  color: #111827;
-  font-size: 2rem;
+.dashboard-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 0.8rem;
+  margin-bottom: 2rem;
 }
 
 .dashboard-header p {
-  margin-top: 0.4rem;
-  color: #6b7280;
-  font-size: 0.96rem;
+  margin: 0;
+  color: #64748b;
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 850px;
+  text-align: center;
 }
 
 /* KPI GRID */
@@ -181,4 +188,14 @@
     text-align: left;
     grid-column: 2;
   }
+}
+.dashboard-page .module-page-header {
+  align-items: center;
+  text-align: center;
+}
+
+.dashboard-page .module-page-description {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }

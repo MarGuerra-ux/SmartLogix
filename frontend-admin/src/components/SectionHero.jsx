@@ -1,12 +1,14 @@
 import "../styles/SectionHero.css";
 
-export default function SectionHero({ icon, title, description }) {
+export default function SectionHero({
+  kicker = "MÓDULO",
+  title,
+  description,
+}) {
   return (
     <section className="section-hero">
-      <span className="section-hero-icon">{icon}</span>
-
+      <p className="section-hero-kicker">{kicker}</p>
       <h2>{title}</h2>
-
       <p>{description}</p>
     </section>
   );

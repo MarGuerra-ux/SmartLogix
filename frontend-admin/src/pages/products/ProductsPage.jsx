@@ -1,374 +1,758 @@
-import { useMemo, useState } from "react";
-import SectionHero from "../../components/SectionHero";
-import products from "../../data/products.json";
+import { useEffect, useMemo, useState } from "react";
+
+import SystemModal from "../../components/ui/SystemModal";
+
+import {
+  getProducts,
+  createProduct,
+  updateProduct,
+  deleteProduct,
+  getOrderItemsByProductId,
+} from "../../services/productService";
+
+import {
+  getCategories,
+} from "../../services/categoryService";
+
 import "../../styles/ProductsPage.css";
+import "../../styles/ModulePages.css";
 
 export default function ProductsPage() {
-  const [selectedProduct, setSelectedProduct] = useState(null);
-  const [openCategories, setOpenCategories] = useState({});
-  const [activeSlide, setActiveSlide] = useState(0);
+  const [products, setProducts] =
+    useState([]);
 
-  const groupedProducts = useMemo(() => {
-    const sorted = [...products].sort((a, b) => {
-      if (a.category === b.category) {
-        return a.name.localeCompare(b.name);
-      }
+  const [
+    selectedProduct,
+    setSelectedProduct,
+  ] = useState(null);
 
-      return a.category.localeCompare(b.category);
-    });
+  const [
+    openCategories,
+    setOpenCategories,
+  ] = useState({});
 
-    return sorted.reduce((groups, product) => {
-      if (!groups[product.category]) {
-        groups[product.category] = [];
-      }
+  const [categories, setCategories] =
+    useState([]);
 
-      groups[product.category].push(product);
-      return groups;
-    }, {});
+  const [
+    showCreateForm,
+    setShowCreateForm,
+  ] = useState(false);
+
+  const [
+    editingProductId,
+    setEditingProductId,
+  ] = useState(null);
+
+  const [productName, setProductName] =
+    useState("");
+
+  const [productSku, setProductSku] =
+    useState("");
+
+  const [
+    productDescription,
+    setProductDescription,
+  ] = useState("");
+
+  const [
+    productCategory,
+    setProductCategory,
+  ] = useState("");
+
+  const [productStock, setProductStock] =
+    useState("");
+
+  const [productPrice, setProductPrice] =
+    useState("");
+
+  const [
+    productWarehouse,
+    setProductWarehouse,
+  ] = useState("");
+
+  const [modalOpen, setModalOpen] =
+    useState(false);
+
+  const [modalType, setModalType] =
+    useState("warning");
+
+  const [modalTitle, setModalTitle] =
+    useState("");
+
+  const [
+    modalMessage,
+    setModalMessage,
+  ] = useState("");
+
+  const [
+    selectedProductToDelete,
+    setSelectedProductToDelete,
+  ] = useState(null);
+
+  async function loadProducts() {
+    setProducts(await getProducts());
+  }
+
+  async function loadCategories() {
+    setCategories(await getCategories());
+  }
+
+  useEffect(() => {
+    loadProducts();
+    loadCategories();
   }, []);
 
-  const formatPrice = (price) => {
-    return new Intl.NumberFormat("es-CL", {
+  const groupedProducts = useMemo(() => {
+    const sorted = [...products].sort(
+      (a, b) => {
+        if (
+          a.category === b.category
+        ) {
+          return a.name.localeCompare(
+            b.name
+          );
+        }
+
+        return a.category.localeCompare(
+          b.category
+        );
+      }
+    );
+
+    return sorted.reduce(
+      (groups, product) => {
+        if (
+          !groups[product.category]
+        ) {
+          groups[product.category] = [];
+        }
+
+        groups[
+          product.category
+        ].push(product);
+
+        return groups;
+      },
+      {}
+    );
+  }, [products]);
+
+  const formatPrice = (price) =>
+    new Intl.NumberFormat("es-CL", {
       style: "currency",
       currency: "CLP",
     }).format(price);
-  };
 
-  const slides = [
-    {
-      label: "Resumen / 8",
-      title: "Resumen del producto",
-      description: selectedProduct?.description,
-      content: selectedProduct && (
-        <div className="product-detail-grid">
-          <span>Categoría</span>
-          <strong>{selectedProduct.category}</strong>
+  async function handleCreateProduct(
+    e
+  ) {
+    e.preventDefault();
 
-          <span>Marca</span>
-          <strong>{selectedProduct.brand}</strong>
+    const productData = {
+      name: productName,
 
-          <span>Precio</span>
-          <strong>{formatPrice(selectedProduct.price)}</strong>
+      sku: productSku,
 
-          <span>Stock</span>
-          <strong>{selectedProduct.stock}</strong>
-        </div>
-      ),
-      actions: (
-        <>
-          <button>Editar producto</button>
-          <button>Desactivar</button>
-        </>
-      ),
-    },
-    {
-      label: "Ventas / 8",
-      title: "Estadísticas de ventas",
-      description: "Rendimiento comercial del producto.",
-      content: (
-        <div className="modal-metrics">
-          <div>
-            <strong>48</strong>
-            <span>Ventas del mes</span>
-          </div>
-          <div>
-            <strong>{formatPrice(2490000)}</strong>
-            <span>Ingresos</span>
-          </div>
-          <div>
-            <strong>12%</strong>
-            <span>Crecimiento</span>
-          </div>
-        </div>
-      ),
-      actions: (
-        <>
-          <button>Ver estadísticas</button>
-          <button>Exportar reporte</button>
-        </>
-      ),
-    },
-    {
-      label: "Inventario / 8",
-      title: "Inventario",
-      description: "Control de stock y reposición.",
-      content: selectedProduct && (
-        <div className="product-detail-grid">
-          <span>Stock actual</span>
-          <strong>{selectedProduct.stock}</strong>
+      description:
+        productDescription,
 
-          <span>Stock mínimo</span>
-          <strong>5</strong>
+      category: productCategory,
 
-          <span>Bodega</span>
-          <strong>Central</strong>
-        </div>
-      ),
-      actions: (
-        <>
-          <button>Ajustar stock</button>
-          <button>Solicitar reposición</button>
-        </>
-      ),
-    },
-    {
-      label: "Proveedor / 8",
-      title: "Proveedor",
-      description: "Datos de contacto y abastecimiento.",
-      content: (
-        <div className="product-detail-grid">
-          <span>Proveedor</span>
-          <strong>Smart Supply Chile</strong>
+      stock_units:
+        Number(productStock),
 
-          <span>Correo</span>
-          <strong>ventas@smartsupply.cl</strong>
+      unit_price:
+        Number(productPrice),
 
-          <span>Entrega promedio</span>
-          <strong>3 días hábiles</strong>
-        </div>
-      ),
-      actions: (
-        <>
-          <button>Contactar proveedor</button>
-          <button>Crear orden de compra</button>
-        </>
-      ),
-    },
-    {
-      label: "Comentarios / 8",
-      title: "Comentarios y valoraciones",
-      description: "Opiniones recientes de clientes.",
-      content: (
-        <div className="modal-comments">
-          <p>⭐ 4.8 promedio</p>
-          <p>“Buen producto, llegó rápido.”</p>
-          <p>“Excelente relación precio/calidad.”</p>
-        </div>
-      ),
-      actions: (
-        <>
-          <button>Ver comentarios</button>
-          <button>Responder valoración</button>
-        </>
-      ),
-    },
-    {
-      label: "Devoluciones / 8",
-      title: "Devoluciones",
-      description: "Solicitudes y motivos frecuentes.",
-      content: (
-        <div className="modal-metrics">
-          <div>
-            <strong>2</strong>
-            <span>Solicitudes</span>
-          </div>
-          <div>
-            <strong>1</strong>
-            <span>Aprobada</span>
-          </div>
-          <div>
-            <strong>1</strong>
-            <span>En revisión</span>
-          </div>
-        </div>
-      ),
-      actions: (
-        <>
-          <button>Revisar devoluciones</button>
-          <button>Ver motivos</button>
-        </>
-      ),
-    },
-    {
-      label: "Promociones / 8",
-      title: "Promociones",
-      description: "Gestión de descuentos y campañas.",
-      content: (
-        <div className="product-detail-grid">
-          <span>Descuento activo</span>
-          <strong>No</strong>
+      warehouse:
+        productWarehouse,
 
-          <span>Campaña</span>
-          <strong>Sin campaña</strong>
-        </div>
-      ),
-      actions: (
-        <>
-          <button>Crear descuento</button>
-          <button>Programar oferta</button>
-        </>
-      ),
-    },
-    {
-      label: "Historial / 8",
-      title: "Historial",
-      description: "Últimos movimientos registrados.",
-      content: (
-        <div className="modal-history">
-          <p>10/05 - Precio actualizado por Marco</p>
-          <p>09/05 - Stock modificado</p>
-          <p>08/05 - Producto creado</p>
-        </div>
-      ),
-      actions: (
-        <>
-          <button>Ver historial completo</button>
-          <button>Exportar</button>
-        </>
-      ),
-    },
-  ];
+      status:
+        Number(productStock) <= 0
+          ? "Agotado"
+          : Number(productStock) <=
+            10
+          ? "Stock Bajo"
+          : "Disponible",
+    };
 
-  const previousSlide = () => {
-    setActiveSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
-  };
+    if (editingProductId) {
+      await updateProduct(
+        editingProductId,
+        productData
+      );
+    } else {
+      await createProduct(
+        productData
+      );
+    }
 
-  const nextSlide = () => {
-    setActiveSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-  };
+    setProductName("");
+    setProductSku("");
+    setProductDescription("");
+    setProductCategory("");
+    setProductStock("");
+    setProductPrice("");
+    setProductWarehouse("");
 
-  const currentSlide = slides[activeSlide];
+    setEditingProductId(null);
+
+    setShowCreateForm(false);
+
+    loadProducts();
+  }
+
+  function handleEditProduct(
+    product
+  ) {
+    setEditingProductId(
+      product.id
+    );
+
+    setProductName(product.name);
+
+    setProductSku(product.sku);
+
+    setProductDescription(
+      product.description || ""
+    );
+
+    setProductCategory(
+      product.category
+    );
+
+    setProductStock(
+      product.stock_units
+    );
+
+    setProductPrice(
+      product.unit_price
+    );
+
+    setProductWarehouse(
+      product.warehouse || ""
+    );
+
+    setShowCreateForm(true);
+
+    setSelectedProduct(null);
+  }
+
+  async function handleDeleteProduct(
+    product
+  ) {
+    const orderItems =
+      await getOrderItemsByProductId(
+        product.id
+      );
+
+    if (orderItems.length > 0) {
+      setModalType("warning");
+
+      setModalTitle(
+        "Operación bloqueada"
+      );
+
+      setModalMessage(
+        "Este producto está asociado a pedidos registrados. No es posible eliminarlo."
+      );
+
+      setModalOpen(true);
+
+      return;
+    }
+
+    setSelectedProductToDelete(
+      product
+    );
+
+    setModalType("error");
+
+    setModalTitle(
+      "Eliminar producto"
+    );
+
+    setModalMessage(
+      "¿Deseas eliminar este producto?"
+    );
+
+    setModalOpen(true);
+  }
+
+  async function confirmDeleteProduct() {
+    if (
+      !selectedProductToDelete
+    )
+      return;
+
+    await deleteProduct(
+      selectedProductToDelete.id
+    );
+
+    setModalOpen(false);
+
+    setSelectedProductToDelete(
+      null
+    );
+
+    setSelectedProduct(null);
+
+    loadProducts();
+  }
 
   return (
     <div className="products-page">
-      <SectionHero
-        kicker="MÓDULO DE CATÁLOGO"
-        title="Productos"
-        description="Administra catálogo, precios, categorías y datos comerciales de cada producto."
-      />
+      <div className="module-page-header">
+        <span className="module-page-kicker">
+          MÓDULO DE CATÁLOGO
+        </span>
 
-      <div className="products-toolbar">
-        <input type="text" placeholder="Buscar producto..." />
-        <button>+ Nuevo Producto</button>
+        <h1 className="module-page-title">
+          Productos
+        </h1>
+
+        <p className="module-page-description">
+          Administra catálogo,
+          precios, categorías y
+          datos comerciales de cada
+          producto.
+        </p>
       </div>
 
+      <div className="products-toolbar">
+        <input
+          type="text"
+          placeholder="Buscar producto..."
+        />
+
+        <button
+          onClick={() =>
+            setShowCreateForm(
+              !showCreateForm
+            )
+          }
+        >
+          + Nuevo Producto
+        </button>
+      </div>
+
+      {showCreateForm && (
+        <form
+          className="product-create-form"
+          onSubmit={
+            handleCreateProduct
+          }
+        >
+          <input
+            type="text"
+            placeholder="Nombre"
+            value={productName}
+            onChange={(e) =>
+              setProductName(
+                e.target.value
+              )
+            }
+            required
+          />
+
+          <input
+            type="text"
+            placeholder="SKU"
+            value={productSku}
+            onChange={(e) =>
+              setProductSku(
+                e.target.value
+              )
+            }
+            required
+          />
+
+          <textarea
+            placeholder="Descripción"
+            value={
+              productDescription
+            }
+            onChange={(e) =>
+              setProductDescription(
+                e.target.value
+              )
+            }
+          />
+
+          <select
+            value={
+              productCategory
+            }
+            onChange={(e) =>
+              setProductCategory(
+                e.target.value
+              )
+            }
+            required
+          >
+            <option value="">
+              Seleccionar categoría
+            </option>
+
+            {categories.map(
+              (category) => (
+                <option
+                  key={
+                    category.id
+                  }
+                  value={
+                    category.name
+                  }
+                >
+                  {
+                    category.name
+                  }
+                </option>
+              )
+            )}
+          </select>
+
+          <input
+            type="number"
+            placeholder="Stock"
+            value={productStock}
+            onChange={(e) =>
+              setProductStock(
+                e.target.value
+              )
+            }
+            required
+          />
+
+          <input
+            type="number"
+            placeholder="Precio"
+            value={productPrice}
+            onChange={(e) =>
+              setProductPrice(
+                e.target.value
+              )
+            }
+            required
+          />
+
+          <input
+            type="text"
+            placeholder="Bodega"
+            value={
+              productWarehouse
+            }
+            onChange={(e) =>
+              setProductWarehouse(
+                e.target.value
+              )
+            }
+          />
+
+          <button type="submit">
+            {editingProductId
+              ? "Actualizar producto"
+              : "Crear producto"}
+          </button>
+        </form>
+      )}
+
       <div className="products-list">
-        {Object.entries(groupedProducts).map(([category, items]) => {
-          const isOpen = openCategories[category] ?? true;
+        {Object.entries(
+          groupedProducts
+        ).map(
+          ([category, items]) => {
+            const isOpen =
+              openCategories[
+                category
+              ] ?? true;
 
-          return (
-            <section className="product-category-block" key={category}>
-              <button
-                className="product-category-header"
-                onClick={() =>
-                  setOpenCategories((prev) => ({
-                    ...prev,
-                    [category]: !isOpen,
-                  }))
-                }
+            return (
+              <section
+                className="products-category-block"
+                key={category}
               >
-                <span>{category}</span>
-                <small>{items.length} productos</small>
-                <strong>{isOpen ? "▲" : "▼"}</strong>
-              </button>
+                <button
+                  className="products-category-header"
+                  onClick={() =>
+                    setOpenCategories(
+                      (
+                        prev
+                      ) => ({
+                        ...prev,
 
-              {isOpen && (
-                <div className="product-table">
-                  {items.map((product) => (
-                    <div className="product-row" key={product.id}>
-                      <div>
-                        <strong>{product.name}</strong>
-                        <span>{product.sku}</span>
-                      </div>
+                        [category]:
+                          !isOpen,
+                      })
+                    )
+                  }
+                >
+                  <div className="products-category-title">
+                    <h3>
+                      {category}
+                    </h3>
 
-                      <div>{product.brand}</div>
-                      <div>{formatPrice(product.price)}</div>
-                      <div>Stock: {product.stock}</div>
+                    <span className="products-category-count">
+                      {
+                        items.length
+                      }{" "}
+                      productos
+                    </span>
+                  </div>
 
-                      <span
-                        className={`product-status ${product.status
-                          .toLowerCase()
-                          .replace(" ", "-")}`}
-                      >
-                        {product.status}
-                      </span>
+                  <strong className="products-category-arrow">
+                    {isOpen
+                      ? "▲"
+                      : "▼"}
+                  </strong>
+                </button>
 
-                      <button
-                        onClick={() => {
-                          setSelectedProduct(product);
-                          setActiveSlide(0);
-                        }}
-                      >
-                        Ver ficha
-                      </button>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </section>
-          );
-        })}
+                {isOpen && (
+                  <div className="products-category-content">
+                    {items.map(
+                      (
+                        product
+                      ) => (
+                        <div
+                          className="product-card"
+                          key={
+                            product.id
+                          }
+                        >
+                          <div className="product-main-info">
+                            <strong>
+                              {
+                                product.name
+                              }
+                            </strong>
+
+                            <span>
+                              {
+                                product.sku
+                              }
+                            </span>
+                          </div>
+
+                          <div className="product-price">
+                            {formatPrice(
+                              product.unit_price
+                            )}
+                          </div>
+
+                          <div className="product-stock">
+                            Stock:{" "}
+                            {
+                              product.stock_units
+                            }
+                          </div>
+
+                          <span
+                            className={`product-status ${product.status
+                              .toLowerCase()
+                              .replace(
+                                " ",
+                                "-"
+                              )}`}
+                          >
+                            {
+                              product.status
+                            }
+                          </span>
+
+                          <button
+                            onClick={() => {
+                              setSelectedProduct(
+                                product
+                              );
+                            }}
+                          >
+                            Ver ficha
+                          </button>
+                        </div>
+                      )
+                    )}
+                  </div>
+                )}
+              </section>
+            );
+          }
+        )}
       </div>
 
       {selectedProduct && (
         <div
           className="product-modal-backdrop"
-          onClick={() => setSelectedProduct(null)}
+          onClick={() =>
+            setSelectedProduct(
+              null
+            )
+          }
         >
           <div
             className="product-modal carousel-modal"
-            onClick={(e) => e.stopPropagation()}
+            onClick={(e) =>
+              e.stopPropagation()
+            }
           >
             <button
               className="modal-close"
-              onClick={() => setSelectedProduct(null)}
+              onClick={() =>
+                setSelectedProduct(
+                  null
+                )
+              }
             >
               ✕
             </button>
 
             <div className="product-modal-image-panel">
-              <img src={selectedProduct.image} alt={selectedProduct.name} />
-              <h2>{selectedProduct.name}</h2>
-              <p>{selectedProduct.sku}</p>
+              <h2>
+                {
+                  selectedProduct.name
+                }
+              </h2>
+
+              <p>
+                {
+                  selectedProduct.sku
+                }
+              </p>
+
               <span
                 className={`product-status ${selectedProduct.status
                   .toLowerCase()
-                  .replace(" ", "-")}`}
+                  .replace(
+                    " ",
+                    "-"
+                  )}`}
               >
-                {selectedProduct.status}
+                {
+                  selectedProduct.status
+                }
               </span>
             </div>
 
             <div className="product-modal-info-panel">
-              <button className="carousel-arrow left" onClick={previousSlide}>
-                ←
-              </button>
-
               <div className="carousel-content">
                 <div className="carousel-body">
                   <small className="carousel-label">
-                    {currentSlide.label}
+                    Resumen
                   </small>
 
-                  <h3>{currentSlide.title}</h3>
+                  <h3>
+                    Resumen del
+                    producto
+                  </h3>
 
-                  <p>{currentSlide.description}</p>
+                  <p>
+                    {
+                      selectedProduct.description
+                    }
+                  </p>
 
-                  {currentSlide.content}
+                  <div className="product-detail-grid">
+                    <span>
+                      Categoría
+                    </span>
+
+                    <strong>
+                      {
+                        selectedProduct.category
+                      }
+                    </strong>
+
+                    <span>
+                      Precio
+                    </span>
+
+                    <strong>
+                      {formatPrice(
+                        selectedProduct.unit_price
+                      )}
+                    </strong>
+
+                    <span>
+                      Stock
+                    </span>
+
+                    <strong>
+                      {
+                        selectedProduct.stock_units
+                      }
+                    </strong>
+
+                    <span>
+                      Bodega
+                    </span>
+
+                    <strong>
+                      {
+                        selectedProduct.warehouse
+                      }
+                    </strong>
+                  </div>
                 </div>
 
                 <div className="modal-actions">
-                  {currentSlide.actions}
-                </div>
+                  <button
+                    onClick={() =>
+                      handleEditProduct(
+                        selectedProduct
+                      )
+                    }
+                  >
+                    Editar producto
+                  </button>
 
-                <div className="carousel-dots">
-                  {slides.map((slide, index) => (
-                    <button
-                      key={slide.label}
-                      className={activeSlide === index ? "active" : ""}
-                      onClick={() => setActiveSlide(index)}
-                    />
-                  ))}
+                  <button
+                    onClick={() =>
+                      handleDeleteProduct(
+                        selectedProduct
+                      )
+                    }
+                  >
+                    Eliminar producto
+                  </button>
                 </div>
               </div>
-
-              <button className="carousel-arrow right" onClick={nextSlide}>
-                →
-              </button>
             </div>
           </div>
         </div>
       )}
+
+      <SystemModal
+        isOpen={modalOpen}
+        type={modalType}
+        title={modalTitle}
+        message={modalMessage}
+        confirmText={
+          modalType ===
+          "warning"
+            ? "Aceptar"
+            : "Eliminar"
+        }
+        cancelText="Cancelar"
+        showCancel={
+          modalType === "error"
+        }
+        onConfirm={
+          modalType ===
+          "warning"
+            ? () =>
+                setModalOpen(
+                  false
+                )
+            : confirmDeleteProduct
+        }
+        onClose={() => {
+          setModalOpen(false);
+
+          setSelectedProductToDelete(
+            null
+          );
+        }}
+      />
     </div>
   );
 }
