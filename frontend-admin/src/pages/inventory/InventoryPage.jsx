@@ -18,6 +18,7 @@ import {
 } from "../../services/categoryService";
 
 import "../../styles/ModulePages.css";
+import "../../styles/InventoryPage.css";
 
 const emptyProductForm = {
   name: "",

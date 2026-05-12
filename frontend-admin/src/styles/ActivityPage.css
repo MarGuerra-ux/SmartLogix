@@ -4,85 +4,450 @@
   gap: 1.5rem;
 }
 
-.activity-header-card {
-  background: linear-gradient(
-    135deg,
-    #0e0e0e 0%,
-    #242426 45%,
-    #090909 100%
-  );
+/* =========================================================
+   KPI
+========================================================= */
 
-  border-radius: 22px;
-  padding: 2rem;
-  color: white;
-  text-align: center;
+.activity-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+}
+
+.activity-kpi-card {
+  position: relative;
+
+  background: #ffffff;
+
+  border-radius: 28px;
+
+  padding: 1.5rem;
+
+  border: 1px solid #e5e7eb;
 
   box-shadow:
-    0 10px 30px rgba(37, 99, 235, 0.25),
-    inset 0 1px 0 rgba(255,255,255,0.08);
+    0 12px 28px rgba(15, 23, 42, 0.06);
+
+  overflow: hidden;
 }
 
-.activity-icon {
-  font-size: 3rem;
+.activity-kpi-card::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  width: 6px;
+  height: 100%;
 }
 
-.activity-header-card h2 {
-  margin-top: 1rem;
-  font-size: 2rem;
+.activity-kpi-card.positive::before {
+  background: #22c55e;
 }
 
-.activity-header-card p {
+.activity-kpi-card.warning::before {
+  background: #f59e0b;
+}
+
+.activity-kpi-card.negative::before {
+  background: #ef4444;
+}
+
+.activity-kpi-card span {
+  display: block;
+
+  color: #64748b;
+
+  font-weight: 800;
+}
+
+.activity-kpi-card strong {
+  display: block;
+
   margin-top: 0.7rem;
-  color: #cbd5e1;
+
+  font-size: 2.3rem;
+
+  font-weight: 900;
+
+  color: #0f172a;
 }
+
+.activity-kpi-card p {
+  margin-top: 0.7rem;
+
+  color: #64748b;
+
+  line-height: 1.6;
+}
+
+/* =========================================================
+   TOOLBAR
+========================================================= */
+
+.activity-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.activity-filter-group {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.activity-filter {
+  border: none;
+
+  border-radius: 999px;
+
+  padding: 0.8rem 1rem;
+
+  background: #f1f5f9;
+
+  color: #475569;
+
+  font-weight: 900;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.activity-filter:hover {
+  transform: translateY(-1px);
+}
+
+.activity-filter.active {
+  color: white;
+}
+
+.activity-filter.active.sent {
+  background: #16a34a;
+}
+
+.activity-filter.active.pending {
+  background: #ea580c;
+}
+
+.activity-filter.active.error {
+  background: #dc2626;
+}
+
+.activity-filter.active:not(.sent):not(.pending):not(.error) {
+  background: #2563eb;
+}
+
+/* =========================================================
+   LIST
+========================================================= */
 
 .activity-list {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.2rem;
 }
+
+/* =========================================================
+   CARD
+========================================================= */
 
 .activity-card {
   background: white;
-  border-radius: 18px;
-  padding: 1.3rem;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-  transition: 0.2s;
+
+  border-radius: 28px;
+
+  padding: 1.5rem;
+
+  border: 1px solid #e5e7eb;
+
+  box-shadow:
+    0 12px 28px rgba(15, 23, 42, 0.06);
+
+  transition: 0.2s ease;
 }
 
 .activity-card:hover {
   transform: translateY(-2px);
 }
 
-.activity-top {
+/* =========================================================
+   TOP
+========================================================= */
+
+.activity-card-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 1rem;
 }
 
-.activity-top h3 {
+.activity-card-info {
+  flex: 1;
+}
+
+.activity-card-info h3 {
   margin: 0;
   color: #0f172a;
+  font-size: 1.3rem;
 }
 
-.activity-date {
+.activity-card-info span {
+  display: inline-block;
+
+  margin-top: 0.35rem;
+
   color: #64748b;
+
   font-size: 0.9rem;
+
+  font-weight: 700;
 }
+
+.activity-icon {
+  width: 62px;
+  height: 62px;
+
+  border-radius: 18px;
+
+  background: #eef2ff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1.8rem;
+}
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.activity-status {
+  border-radius: 999px;
+
+  padding: 0.55rem 0.9rem;
+
+  font-size: 0.8rem;
+
+  font-weight: 900;
+}
+
+.activity-status.sent {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.activity-status.pending {
+  background: #ffedd5;
+  color: #ea580c;
+}
+
+.activity-status.error {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.activity-status.normal {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+/* =========================================================
+   MESSAGE
+========================================================= */
 
 .activity-message {
-  margin-top: 0.8rem;
+  margin-top: 1rem;
+
   color: #334155;
+
+  line-height: 1.8;
+
+  font-size: 1rem;
 }
+
+/* =========================================================
+   META GRID
+========================================================= */
+
+.activity-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 1rem;
+
+  margin-top: 1.4rem;
+}
+
+.activity-meta-grid div {
+  background: #f8fafc;
+
+  border-radius: 18px;
+
+  border: 1px solid #e2e8f0;
+
+  padding: 1rem;
+}
+
+.activity-meta-grid span {
+  display: block;
+
+  color: #64748b;
+
+  font-size: 0.8rem;
+
+  font-weight: 800;
+
+  margin-bottom: 0.45rem;
+}
+
+.activity-meta-grid strong {
+  color: #0f172a;
+
+  font-weight: 900;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
 
 .activity-footer {
-  margin-top: 1rem;
-  color: #475569;
-  font-size: 0.95rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 1rem;
+
+  margin-top: 1.5rem;
 }
 
-.activity-header-card h2 {
-  margin-top: 1rem;
-  font-size: 2rem;
+.activity-date-group {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.activity-date-group span {
+  color: #64748b;
+  font-weight: 700;
+}
+
+/* =========================================================
+   ACTIONS
+========================================================= */
+
+.activity-actions {
+  display: flex;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+}
+
+.activity-action-button {
+  border: none;
+
+  border-radius: 14px;
+
+  padding: 0.8rem 1rem;
+
   color: white;
+
+  font-weight: 900;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.activity-action-button:hover {
+  transform: translateY(-1px);
+}
+
+.activity-action-button.sent {
+  background: #16a34a;
+}
+
+.activity-action-button.pending {
+  background: #ea580c;
+}
+
+.activity-action-button.error {
+  background: #dc2626;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1200px) {
+  .activity-meta-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .activity-kpi-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .activity-card-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .activity-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 700px) {
+  .activity-meta-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .activity-actions {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .activity-action-button {
+    width: 100%;
+  }
+}
+.activity-modal-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  background: rgba(15, 23, 42, 0.55) !important;
+  backdrop-filter: blur(6px);
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 2rem !important;
+  z-index: 9999 !important;
+}
+
+.activity-management-modal {
+  width: min(980px, 100%) !important;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: #ffffff !important;
+  border-radius: 30px !important;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.22);
+  padding: 1.8rem !important;
+}
+
+.activity-modal-close {
+  border: none;
+  background: #f1f5f9;
+  color: #334155;
+  width: 46px;
+  height: 46px;
+  border-radius: 16px;
+  font-size: 1.5rem;
+  cursor: pointer;
 }

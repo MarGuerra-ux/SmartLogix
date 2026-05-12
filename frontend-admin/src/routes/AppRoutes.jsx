@@ -2,6 +2,8 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import MainLayout from "../components/layout/MainLayout";
 
+import LoginPage from "../pages/login/LoginPage";
+
 import DashboardPage from "../pages/dashboard/DashboardPage";
 import ActivityPage from "../pages/activity/ActivityPage";
 
@@ -23,13 +25,31 @@ import TopSalesPage from "../pages/top-sales/TopSalesPage";
 import UsersPage from "../pages/users/UsersPage";
 import SettingsPage from "../pages/settings/SettingsPage";
 
+function ProtectedRoute({ children }) {
+  const token = localStorage.getItem("smartlogix_token");
+
+  if (!token) {
+    return <Navigate to="/login" replace />;
+  }
+
+  return children;
+}
+
 function AppRoutes() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/login" element={<LoginPage />} />
+
         <Route path="/" element={<Navigate to="/dashboard" replace />} />
 
-        <Route element={<MainLayout />}>
+        <Route
+          element={
+            <ProtectedRoute>
+              <MainLayout />
+            </ProtectedRoute>
+          }
+        >
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/activity" element={<ActivityPage />} />
 

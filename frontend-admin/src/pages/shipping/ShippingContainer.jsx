@@ -36,8 +36,7 @@ function ShippingContainer() {
   function getShipmentProduct(shipment) {
     return products.find(
       (product) =>
-        product.name?.toLowerCase() ===
-        shipment.product_name?.toLowerCase()
+        product.name?.toLowerCase() === shipment.product_name?.toLowerCase()
     );
   }
 
@@ -77,15 +76,22 @@ function ShippingContainer() {
   async function handleConfirmShipment(shipment) {
     const stockInfo = getStockInfo(shipment);
 
-    if (!stockInfo.hasStock) return;
+    if (!stockInfo.hasStock) {
+      alert(
+        "No se puede confirmar el despacho porque el producto no tiene stock disponible."
+      );
+      return;
+    }
 
     await updateShipmentStatus(shipment.id, "En tránsito");
+
     setSelectedShipment(null);
     loadShipments();
   }
 
   async function handleDeliverShipment(id) {
     await updateShipmentStatus(id, "Entregado");
+
     setSelectedShipment(null);
     loadShipments();
   }
@@ -137,7 +143,8 @@ function ShippingContainer() {
         <h1 className="module-page-title">Envíos</h1>
 
         <p className="module-page-description">
-          Coordina despachos, actualiza tracking y monitorea estados en tiempo real.
+          Coordina despachos, actualiza tracking y monitorea estados en tiempo
+          real.
         </p>
       </div>
 
@@ -219,6 +226,7 @@ function ShippingContainer() {
                 </td>
 
                 <td>{shipment.customer_name || "Cliente no registrado"}</td>
+
                 <td>{shipment.destination || "Sin destino"}</td>
 
                 <td>
@@ -261,7 +269,9 @@ function ShippingContainer() {
             <div className="modal-header">
               <div>
                 <span className="module-page-kicker">DETALLE DEL ENVÍO</span>
+
                 <h3>{selectedShipment.tracking_code}</h3>
+
                 <p>Confirma el avance del envío o rechaza el registro.</p>
               </div>
 
@@ -273,35 +283,74 @@ function ShippingContainer() {
               </button>
             </div>
 
-            <div className="client-detail-grid">
-              <span>Cliente</span>
-              <strong>{selectedShipment.customer_name || "Sin cliente"}</strong>
+            <div className="order-detail-grid">
+              <div className="order-detail-item">
+                <span>Cliente</span>
+                <strong>
+                  {selectedShipment.customer_name || "Sin cliente"}
+                </strong>
+              </div>
 
-              <span>Producto</span>
-              <strong>{selectedShipment.product_name || "Sin producto"}</strong>
+              <div className="order-detail-item">
+                <span>Producto</span>
+                <strong>
+                  {selectedShipment.product_name || "Sin producto"}
+                </strong>
+              </div>
 
-              <span>Stock</span>
-              <strong
-                style={{
-                  color: selectedStockInfo?.hasStock ? "#166534" : "#dc2626",
-                }}
-              >
-                {selectedStockInfo?.message}
-              </strong>
+              <div className="order-detail-item">
+                <span>Stock</span>
+                <strong
+                  style={{
+                    color: selectedStockInfo?.hasStock
+                      ? "#166534"
+                      : "#dc2626",
+                  }}
+                >
+                  {selectedStockInfo?.message}
+                </strong>
+              </div>
 
-              <span>Destino</span>
-              <strong>{selectedShipment.destination || "Sin destino"}</strong>
+              <div className="order-detail-item">
+                <span>Destino</span>
+                <strong>
+                  {selectedShipment.destination || "Sin destino"}
+                </strong>
+              </div>
 
-              <span>Transportista</span>
-              <strong>
-                {selectedShipment.carrier_name || "Sin transportista"}
-              </strong>
+              <div className="order-detail-item">
+                <span>Transportista</span>
+                <strong>
+                  {selectedShipment.carrier_name || "Sin transportista"}
+                </strong>
+              </div>
 
-              <span>Servicio</span>
-              <strong>{selectedShipment.service_name || "Sin servicio"}</strong>
+              <div className="order-detail-item">
+                <span>Servicio</span>
+                <strong>
+                  {selectedShipment.service_name || "Sin servicio"}
+                </strong>
+              </div>
 
-              <span>Estado</span>
-              <strong>{selectedShipment.status}</strong>
+              <div className="order-detail-item">
+                <span>Estado</span>
+                <strong>{selectedShipment.status}</strong>
+              </div>
+
+              <div className="order-detail-item">
+                <span>Disponibilidad</span>
+                <strong
+                  style={{
+                    color: selectedStockInfo?.hasStock
+                      ? "#16a34a"
+                      : "#dc2626",
+                  }}
+                >
+                  {selectedStockInfo?.hasStock
+                    ? "Disponible para despacho"
+                    : "No disponible"}
+                </strong>
+              </div>
             </div>
 
             <div className="modal-actions">

@@ -4,423 +4,400 @@
   gap: 1.5rem;
 }
 
-/* TOOLBAR */
+/* =========================================================
+   TOOLBAR
+========================================================= */
 
 .clients-toolbar {
   display: flex;
-  width: 100%;
+  justify-content: space-between;
+  align-items: center;
   gap: 1rem;
 }
 
 .clients-toolbar input {
-  flex: 1;
-
-  padding: 0.95rem 1rem;
-
+  width: 100%;
+  max-width: 420px;
   border: 1px solid #dbe3ef;
-
-  border-radius: 14px;
-
+  border-radius: 16px;
+  padding: 0.95rem 1rem;
   background: #ffffff;
-
-  color: #111827;
-
+  color: #0f172a;
+  font-size: 0.95rem;
+  font-weight: 600;
   outline: none;
-}
-
-.clients-toolbar input::placeholder {
-  color: #6b7280;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
 }
 
 .clients-toolbar input:focus {
-  border-color: #9ca3af;
+  border-color: #2563eb;
 }
 
-.clients-toolbar button,
-.client-view-button,
-.client-modal-actions button {
-  border: none;
+/* =========================================================
+   TABLE CARD
+========================================================= */
 
-  border-radius: 12px;
-
-  padding: 0.75rem 1rem;
-
-  background: #111827;
-
-  color: white;
-
-  font-weight: 700;
-
-  cursor: pointer;
-
-  transition: 0.18s ease;
-}
-
-.clients-toolbar button:hover,
-.client-view-button:hover,
-.client-modal-actions button:hover {
-  background: #000000;
-}
-
-/* FORM */
-
-.client-form {
+.clients-table-card {
   background: #ffffff;
-
   border: 1px solid #e5e7eb;
-
-  border-radius: 24px;
-
-  padding: 1.5rem;
-
-  display: grid;
-
-  grid-template-columns: repeat(2, 1fr);
-
-  gap: 1rem;
-
-  box-shadow:
-    0 2px 8px
-    rgba(15, 23, 42, 0.04);
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.06);
 }
 
-.client-form input {
-  background: #f9fafb;
-
-  border: 1px solid #dbe3ef;
-
-  color: #111827;
-
-  padding: 0.95rem 1rem;
-
-  border-radius: 14px;
-
-  outline: none;
+.clients-table-wrapper {
+  overflow-x: auto;
 }
 
-.client-form input::placeholder {
-  color: #6b7280;
+/* =========================================================
+   TABLE
+========================================================= */
+
+.clients-table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
-.client-form input:focus {
-  background: #ffffff;
-
-  border-color: #9ca3af;
+.clients-table thead {
+  background: #f8fafc;
 }
 
-.client-form button {
-  grid-column: span 2;
-
-  border: none;
-
-  background: #111827;
-
-  color: white;
-
-  padding: 1rem;
-
-  border-radius: 14px;
-
-  font-weight: 700;
-
-  cursor: pointer;
+.clients-table th {
+  padding: 1.1rem 1.2rem;
+  text-align: left;
+  color: #64748b;
+  font-size: 0.82rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-bottom: 1px solid #e5e7eb;
 }
 
-/* LIST */
+.clients-table td {
+  padding: 1.15rem 1.2rem;
+  color: #0f172a;
+  border-bottom: 1px solid #f1f5f9;
+  vertical-align: middle;
+}
 
-.clients-list {
+.clients-table tbody tr {
+  transition: background 0.2s ease;
+}
+
+.clients-table tbody tr:hover {
+  background: #f8fafc;
+}
+
+/* =========================================================
+   CLIENT CELL
+========================================================= */
+
+.client-cell {
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.client-card {
-  display: grid;
-
-  grid-template-columns:
-    56px
-    1.5fr
-    1fr
-    1fr
-    1fr
-    0.8fr
-    auto;
-
   align-items: center;
-
   gap: 1rem;
-
-  background: #ffffff;
-
-  border: 1px solid #e5e7eb;
-
-  border-radius: 20px;
-
-  padding: 1rem 1.2rem;
-
-  transition: 0.18s ease;
-
-  box-shadow:
-    0 2px 8px
-    rgba(15, 23, 42, 0.04);
 }
 
-.client-card:hover {
-  border-color: #cbd5e1;
+.client-cell strong {
+  display: block;
+  color: #0f172a;
+}
 
-  transform: translateY(-2px);
+.client-cell span {
+  display: block;
+  margin-top: 0.2rem;
+  color: #64748b;
+  font-size: 0.85rem;
 }
 
 .client-avatar {
-  width: 46px;
-
-  height: 46px;
-
-  border-radius: 14px;
-
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
   background: #eef2ff;
-
   color: #1d4ed8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 1rem;
+}
 
-  display: grid;
+/* =========================================================
+   STATUS
+========================================================= */
 
-  place-items: center;
-
+.client-status-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 0.45rem 0.8rem;
+  background: #dcfce7;
+  color: #15803d;
+  font-size: 0.8rem;
   font-weight: 900;
 }
 
-.client-main-info strong {
-  display: block;
+/* =========================================================
+   BUTTONS
+========================================================= */
 
-  color: #111827;
-}
-
-.client-main-info span,
-.client-city,
-.client-purchases,
-.client-total {
-  color: #6b7280;
-
-  font-size: 0.92rem;
-}
-
-/* STATUS */
-
-.client-status {
-  display: inline-flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  border-radius: 999px;
-
-  padding: 0.45rem 0.8rem;
-
-  font-size: 0.78rem;
-
+.client-action-button,
+.client-primary-button,
+.client-secondary-button {
+  border: none;
+  border-radius: 14px;
+  padding: 0.8rem 1rem;
   font-weight: 800;
-
-  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-.client-status.activo {
-  background: #dcfce7;
-
-  color: #166534;
+.client-action-button,
+.client-primary-button {
+  background: #0f172a;
+  color: #ffffff;
 }
 
-/* MODAL */
+.client-action-button:hover,
+.client-primary-button:hover {
+  background: #1e293b;
+  transform: translateY(-1px);
+}
 
-.client-modal-backdrop {
+.client-secondary-button {
+  background: #f1f5f9;
+  color: #334155;
+}
+
+.client-secondary-button:hover {
+  background: #e2e8f0;
+}
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.client-modal-overlay {
   position: fixed;
-
   inset: 0;
-
   background: rgba(15, 23, 42, 0.45);
-
-  backdrop-filter: blur(3px);
-
-  display: grid;
-
-  place-items: center;
-
-  z-index: 100;
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  z-index: 999;
 }
 
 .client-modal {
-  width: min(900px, 94vw);
-
-  background: #ffffff;
-
-  border-radius: 26px;
-
-  padding: 1.5rem;
-
-  display: grid;
-
-  grid-template-columns: 320px 1fr;
-
-  gap: 1.5rem;
-
   position: relative;
-
-  overflow: hidden;
-
-  box-shadow:
-    0 12px 32px
-    rgba(15, 23, 42, 0.16);
+  width: min(1150px, 100%);
+  background: #ffffff;
+  border-radius: 32px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.18);
+  padding: 1.8rem;
 }
 
 .client-modal-close {
   position: absolute;
-
   top: 1rem;
-
   right: 1rem;
-
-  border: none;
-
-  background: #f3f4f6;
-
-  color: #111827;
-
-  border-radius: 999px;
-
   width: 42px;
-
   height: 42px;
-
+  border: none;
+  border-radius: 14px;
+  background: #f1f5f9;
+  color: #334155;
+  font-size: 1.3rem;
   cursor: pointer;
-
-  z-index: 10;
 }
 
-.client-modal-left {
+.client-modal-layout {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 1.5rem;
+}
+
+/* =========================================================
+   PROFILE CARD
+========================================================= */
+
+.client-profile-card {
   background: #f8fafc;
-
-  border: 1px solid #e5e7eb;
-
-  border-radius: 20px;
-
-  padding: 1.5rem;
-
+  border: 1px solid #e2e8f0;
+  border-radius: 28px;
+  padding: 2rem;
   text-align: center;
 }
 
-.client-modal-avatar {
-  width: 90px;
-
-  height: 90px;
-
-  margin: 0 auto 1rem;
-
-  border-radius: 24px;
-
-  background: #eef2ff;
-
+.client-profile-avatar {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 1.4rem;
+  border-radius: 28px;
+  background: #e0e7ff;
   color: #1d4ed8;
-
-  display: grid;
-
-  place-items: center;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 2rem;
-
   font-weight: 900;
 }
 
-.client-modal-left h2 {
+.client-profile-card h2 {
   margin: 0;
-
-  color: #111827;
+  color: #0f172a;
+  font-size: 2rem;
 }
 
-.client-modal-left p {
-  color: #6b7280;
+.client-profile-card p {
+  margin-top: 0.5rem;
+  color: #64748b;
+  font-size: 1rem;
 }
 
-.client-modal-right {
+.client-profile-card .client-status-badge {
+  margin-top: 1.3rem;
+}
+
+/* =========================================================
+   INFO CARD
+========================================================= */
+
+.client-info-card {
   background: #f8fafc;
-
-  border: 1px solid #e5e7eb;
-
-  border-radius: 20px;
-
+  border: 1px solid #e2e8f0;
+  border-radius: 28px;
   padding: 2rem;
 }
 
-.client-modal-right h3 {
-  margin: 0 0 1rem;
-
+.client-info-card h2 {
+  margin: 0 0 1.5rem;
   color: #111827;
-
-  font-size: 1.6rem;
+  font-size: 2rem;
 }
 
-.client-detail-grid {
+/* =========================================================
+   INFO GRID
+========================================================= */
+
+.client-info-grid {
   display: grid;
-
-  grid-template-columns: 1fr 1fr;
-
-  gap: 0.9rem;
+  grid-template-columns: 180px 1fr;
+  gap: 1rem 1.5rem;
+  margin-bottom: 2rem;
 }
 
-.client-detail-grid span {
-  color: #6b7280;
+.client-info-grid span {
+  color: #64748b;
+  font-weight: 700;
 }
 
-.client-detail-grid strong {
+.client-info-grid strong {
   color: #111827;
+  font-size: 1.02rem;
 }
+
+/* =========================================================
+   BANK SECTION
+========================================================= */
+
+.client-bank-section {
+  margin-top: 1rem;
+}
+
+.client-bank-header span {
+  color: #2563eb;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.client-bank-header h3 {
+  margin: 0.45rem 0 1.2rem;
+  color: #0f172a;
+  font-size: 1.35rem;
+}
+
+.client-bank-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.client-bank-grid div {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  padding: 1rem;
+}
+
+.client-bank-grid span {
+  display: block;
+  color: #64748b;
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.client-bank-grid strong {
+  display: block;
+  margin-top: 0.45rem;
+  color: #0f172a;
+  line-height: 1.5;
+}
+
+/* =========================================================
+   ACTIONS
+========================================================= */
 
 .client-modal-actions {
   display: flex;
-
-  gap: 0.8rem;
-
+  gap: 1rem;
   margin-top: 2rem;
-
   flex-wrap: wrap;
 }
 
-/* RESPONSIVE */
+/* =========================================================
+   RESPONSIVE
+========================================================= */
 
-@media (max-width: 980px) {
-  .client-card {
-    grid-template-columns: 56px 1fr;
-  }
-
-  .client-city,
-  .client-purchases,
-  .client-total,
-  .client-status,
-  .client-view-button {
-    grid-column: 2;
-  }
-
-  .client-modal {
+@media (max-width: 1100px) {
+  .client-modal-layout {
     grid-template-columns: 1fr;
+  }
 
-    max-height: 90vh;
-
-    overflow-y: auto;
+  .client-bank-grid {
+    grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 768px) {
-  .clients-toolbar,
-  .client-form {
+  .client-info-grid {
     grid-template-columns: 1fr;
+  }
 
+  .client-profile-card,
+  .client-info-card {
+    padding: 1.4rem;
+  }
+
+  .client-profile-card h2,
+  .client-info-card h2 {
+    font-size: 1.6rem;
+  }
+
+  .client-modal-overlay {
+    padding: 1rem;
+  }
+
+  .client-modal-actions {
     flex-direction: column;
   }
 
-  .client-form button {
-    grid-column: span 1;
-  }
-
-  .client-detail-grid {
-    grid-template-columns: 1fr;
+  .clients-toolbar input {
+    max-width: 100%;
   }
 }
