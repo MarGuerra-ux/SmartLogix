@@ -1,6 +1,8 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import MainLayout from "../components/layout/MainLayout";
+import ProtectedRoute from "./ProtectedRoute"; // NUEVO
+import LoginPage from "../pages/auth/LoginPage"; // NUEVO
 
 import DashboardPage from "../pages/dashboard/DashboardPage";
 import ActivityPage from "../pages/activity/ActivityPage";
@@ -27,9 +29,14 @@ function AppRoutes() {
   return (
     <BrowserRouter>
       <Routes>
+        {/* Ruta Pública (Cualquiera puede verla) */}
+        <Route path="/login" element={<LoginPage />} />
+
+        {/* Ruta Base - Redirige al dashboard */}
         <Route path="/" element={<Navigate to="/dashboard" replace />} />
 
-        <Route element={<MainLayout />}>
+        {/* Rutas Protegidas (Solo con sesión iniciada) */}
+        <Route element={<ProtectedRoute><MainLayout /></ProtectedRoute>}>
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/activity" element={<ActivityPage />} />
 
@@ -51,6 +58,7 @@ function AppRoutes() {
           <Route path="/settings" element={<SettingsPage />} />
         </Route>
 
+        {/* Ruta para capturar errores */}
         <Route path="*" element={<Navigate to="/dashboard" replace />} />
       </Routes>
     </BrowserRouter>
