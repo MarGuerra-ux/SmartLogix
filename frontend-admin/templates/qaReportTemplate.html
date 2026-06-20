@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>
+
+SmartLogix QA Report
+
+</title>
+
+{{STYLE_BLOCK}}
+
+</head>
+
+<body>
+
+<!-- ===================================================== -->
+<!-- PORTADA -->
+<!-- ===================================================== -->
+
+<section class="cover">
+
+    <div class="logo">
+
+        SMARTLOGIX
+
+    </div>
+
+    <div class="subtitle">
+
+        Quality Assurance Executive Report
+
+    </div>
+
+    <div class="pass-badge">
+
+        {{STATUS}}
+
+    </div>
+
+    <div class="cover-info">
+
+        <table>
+
+            <tr>
+
+                <td>
+
+                    <strong>
+
+                        Proyecto
+
+                    </strong>
+
+                </td>
+
+                <td>
+
+                    {{PROJECT}}
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>
+
+                    <strong>
+
+                        Versión
+
+                    </strong>
+
+                </td>
+
+                <td>
+
+                    {{VERSION}}
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>
+
+                    <strong>
+
+                        Fecha
+
+                    </strong>
+
+                </td>
+
+                <td>
+
+                    {{DATE}}
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>
+
+                    <strong>
+
+                        Hora
+
+                    </strong>
+
+                </td>
+
+                <td>
+
+                    {{TIME}}
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>
+
+                    <strong>
+
+                        QA Engineer
+
+                    </strong>
+
+                </td>
+
+                <td>
+
+                    {{QA1}}
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>
+
+                    <strong>
+
+                        Branch
+
+                    </strong>
+
+                </td>
+
+                <td>
+
+                    {{BRANCH1}}
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>
+
+                    <strong>
+
+                        QA Engineer
+
+                    </strong>
+
+                </td>
+
+                <td>
+
+                    {{QA2}}
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>
+
+                    <strong>
+
+                        Branch
+
+                    </strong>
+
+                </td>
+
+                <td>
+
+                    {{BRANCH2}}
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>
+
+                    <strong>
+
+                        Framework
+
+                    </strong>
+
+                </td>
+
+                <td>
+
+                    Vitest 4 + V8 Coverage
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>
+
+                    <strong>
+
+                        Estado
+
+                    </strong>
+
+                </td>
+
+                <td>
+
+                    {{STATUS}}
+
+                </td>
+
+            </tr>
+
+        </table>
+
+    </div>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- PAGINA 2 -->
+<!-- ===================================================== -->
+
+<section class="page">
+
+    <h1>
+
+        Resumen Ejecutivo
+
+    </h1>
+
+    <div class="kpi-grid">
+
+        <div class="kpi">
+
+            <div class="kpi-title">
+
+                Suites
+
+            </div>
+
+            <div class="kpi-value">
+
+                {{TOTAL_SUITES}}
+
+            </div>
+
+        </div>
+
+        <div class="kpi">
+
+            <div class="kpi-title">
+
+                Tests
+
+            </div>
+
+            <div class="kpi-value">
+
+                {{TOTAL_TESTS}}
+
+            </div>
+
+        </div>
+
+        <div class="kpi">
+
+            <div class="kpi-title">
+
+                Passed
+
+            </div>
+
+            <div class="kpi-value">
+
+                {{PASSED_TESTS}}
+
+            </div>
+
+        </div>
+
+        <div class="kpi">
+
+            <div class="kpi-title">
+
+                Failed
+
+            </div>
+
+            <div class="kpi-value">
+
+                {{FAILED_TESTS}}
+
+            </div>
+
+        </div>
+
+    </div>
+
+        <div class="card">
+
+        <h2>
+
+            Cobertura del Proyecto
+
+        </h2>
+
+        <div class="coverage-grid">
+
+            <div class="coverage-box">
+
+                <div class="coverage-title">
+
+                    Statements
+
+                </div>
+
+                <div class="coverage-value">
+
+                    {{STATEMENTS}}%
+
+                </div>
+
+            </div>
+
+            <div class="coverage-box">
+
+                <div class="coverage-title">
+
+                    Branches
+
+                </div>
+
+                <div class="coverage-value">
+
+                    {{BRANCHES}}%
+
+                </div>
+
+            </div>
+
+            <div class="coverage-box">
+
+                <div class="coverage-title">
+
+                    Functions
+
+                </div>
+
+                <div class="coverage-value">
+
+                    {{FUNCTIONS}}%
+
+                </div>
+
+            </div>
+
+            <div class="coverage-box">
+
+                <div class="coverage-title">
+
+                    Lines
+
+                </div>
+
+                <div class="coverage-value">
+
+                    {{LINES}}%
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <h2>
+
+            Servicios Evaluados
+
+        </h2>
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+
+                        Servicio
+
+                    </th>
+
+                    <th>
+
+                        Estado
+
+                    </th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {{SERVICE_ROWS}}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <div class="success">
+
+        <strong>
+
+            Resultado
+
+        </strong>
+
+        <br><br>
+
+        Todas las pruebas automatizadas finalizaron correctamente.
+
+        El sistema alcanzó la cobertura mínima requerida para la entrega.
+
+        No se detectaron errores durante la ejecución automática.
+
+    </div>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- PAGINA 3 -->
+<!-- ===================================================== -->
+
+<section class="page">
+
+    <h1>
+
+        Conclusiones QA
+
+    </h1>
+
+    <div class="card">
+
+        <h3>
+
+            Resumen Técnico
+
+        </h3>
+
+        <p>
+
+            El proceso de validación fue ejecutado mediante pruebas unitarias
+            automatizadas utilizando Vitest como framework principal y
+            V8 Coverage como motor de análisis de cobertura.
+
+        </p>
+
+        <br>
+
+        <p>
+
+            Se validaron doce servicios pertenecientes a los módulos críticos
+            del sistema SmartLogix, obteniendo un resultado exitoso
+            en todas las pruebas ejecutadas.
+
+        </p>
+
+        <br>
+
+        <p>
+
+            La cobertura obtenida supera el mínimo exigido para la presente
+            entrega, permitiendo considerar la versión evaluada como
+            apta para demostración académica.
+
+        </p>
+
+    </div>
+        <div class="card">
+
+        <h2>
+
+            Fortalezas Detectadas
+
+        </h2>
+
+        <ul>
+
+            <li>
+
+                ✔ Todas las pruebas unitarias finalizaron correctamente.
+
+            </li>
+
+            <li>
+
+                ✔ No se detectaron errores durante la ejecución automática.
+
+            </li>
+
+            <li>
+
+                ✔ Los servicios críticos presentan una cobertura elevada.
+
+            </li>
+
+            <li>
+
+                ✔ Se validaron escenarios exitosos y escenarios de error mediante Mocking.
+
+            </li>
+
+            <li>
+
+                ✔ El proceso de QA puede ejecutarse nuevamente mediante un único comando.
+
+            </li>
+
+        </ul>
+
+    </div>
+
+    <div class="warning">
+
+        <strong>
+
+            Observaciones QA
+
+        </strong>
+
+        <br><br>
+
+        Algunos archivos correspondientes a datos Mock, generadores
+        de información y estructuras estáticas presentan una cobertura
+        inferior debido a que contienen información de apoyo y no lógica
+        de negocio. Esta situación no afecta el comportamiento funcional
+        del sistema.
+
+    </div>
+
+    <div class="card">
+
+        <h2>
+
+            Resultado Final
+
+        </h2>
+
+        <div
+            style="
+
+                margin-top:35px;
+
+                text-align:center;
+
+            "
+
+        >
+
+            <div
+                style="
+
+                    font-size:70px;
+
+                    margin-bottom:25px;
+
+                "
+
+            >
+
+                🟢
+
+            </div>
+
+            <div
+                style="
+
+                    font-size:48px;
+
+                    font-weight:bold;
+
+                    color:#14a44d;
+
+                    letter-spacing:3px;
+
+                "
+
+            >
+
+                {{STATUS}}
+
+            </div>
+
+            <div
+                style="
+
+                    margin-top:25px;
+
+                    font-size:18px;
+
+                    color:#555;
+
+                "
+
+            >
+
+                El sistema SmartLogix cumple satisfactoriamente
+
+                con los criterios definidos para la presente
+
+                entrega académica.
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class="footer">
+
+        <hr
+            style="
+                margin-bottom:20px;
+                border:none;
+                border-top:1px solid #dcdcdc;
+            "
+        >
+
+        <p>
+
+            <strong>
+
+                SmartLogix QA Engine
+
+            </strong>
+
+        </p>
+
+        <br>
+
+        <p>
+
+            Reporte generado automáticamente mediante
+
+            <strong>Vitest</strong> +
+
+            <strong>V8 Coverage</strong> +
+
+            <strong>Puppeteer</strong>
+
+        </p>
+
+        <br>
+
+        <p>
+
+            Proyecto SmartLogix
+
+            © 2026
+
+        </p>
+
+        <br>
+
+        <p>
+
+            Equipo QA
+
+        </p>
+
+        <p>
+
+            Marco Guerra
+
+            |
+
+            qa-marco
+
+        </p>
+
+        <p>
+
+            Matías Vergara
+
+            |
+
+            qa-MatiasVergara
+
+        </p>
+
+        <br>
+
+        <p>
+
+            Este documento fue generado automáticamente
+
+            sin intervención manual.
+
+        </p>
+
+    </div>
+
+</section>
+
+</body>
+
+</html>
