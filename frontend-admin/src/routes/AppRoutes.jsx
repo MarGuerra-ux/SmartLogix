@@ -15,12 +15,17 @@ import OrdersPage from "../pages/orders/OrdersPage";
 import ShippingPage from "../pages/shipping/ShippingPage";
 import RefundsPage from "../pages/refunds/RefundsPage";
 
+import CarriersPage from "../pages/carriers/CarriersPage";
+import TrackingPage from "../pages/tracking/TrackingPage";
+
 import ClientsPage from "../pages/clients/ClientsPage";
 
 import SalesPage from "../pages/sales/SalesPage";
 import DailyCashPage from "../pages/daily-cash/DailyCashPage";
 import MetricsPage from "../pages/metrics/MetricsPage";
 import TopSalesPage from "../pages/top-sales/TopSalesPage";
+
+import AutomationFlowPage from "../pages/automation-flow/AutomationFlowPage";
 
 import UsersPage from "../pages/users/UsersPage";
 import SettingsPage from "../pages/settings/SettingsPage";
@@ -59,7 +64,13 @@ function AppRoutes() {
 
           <Route path="/orders" element={<OrdersPage />} />
           <Route path="/shipping" element={<ShippingPage />} />
+
+          <Route path="/tracking" element={<TrackingPage />} />
+
           <Route path="/refunds" element={<RefundsPage />} />
+
+          <Route path="/carriers" element={<CarriersPage />} />
+          <Route path="/automation-flow" element={<AutomationFlowPage />} />
 
           <Route path="/clients" element={<ClientsPage />} />
 

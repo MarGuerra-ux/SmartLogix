@@ -1,0 +1,51 @@
+.automation-board{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:28px;
+
+    width:100%;
+
+    padding:28px;
+
+    background:#07111d;
+
+    min-height:100vh;
+
+}
+
+.automation-bottom{
+
+    display:grid;
+
+    grid-template-columns:360px 1fr;
+
+    gap:24px;
+
+    align-items:start;
+
+}
+
+@media(max-width:1400px){
+
+    .automation-bottom{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+@media(max-width:900px){
+
+    .automation-board{
+
+        padding:18px;
+
+        gap:20px;
+
+    }
+
+}

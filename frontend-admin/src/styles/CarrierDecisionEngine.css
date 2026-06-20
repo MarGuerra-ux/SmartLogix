@@ -1,0 +1,161 @@
+/* ===========================
+   CarrierDecisionEngine.css
+=========================== */
+
+.decision-engine-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 24px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+}
+
+.decision-engine-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.decision-engine-header h2 {
+  margin: 0;
+  color: #111827;
+  font-size: 1.4rem;
+}
+
+.decision-badge {
+  background: #ecfdf5;
+  border: 1px solid #bbf7d0;
+  color: #15803d;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.decision-description {
+  margin-top: 1rem;
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+/* =====================================
+   RECOMMENDED CARRIER
+===================================== */
+
+.recommended-carrier {
+  margin-top: 1.4rem;
+
+  background: linear-gradient(
+    135deg,
+    #eff6ff,
+    #f8fafc
+  );
+
+  border: 1px solid #bfdbfe;
+
+  border-radius: 18px;
+
+  padding: 1rem 1.2rem;
+}
+
+.recommended-carrier h3 {
+  margin: 0 0 0.5rem;
+  color: #2563eb;
+  font-size: 0.95rem;
+}
+
+.recommended-carrier span {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #111827;
+}
+
+/* =====================================
+   INSIGHTS
+===================================== */
+
+.decision-insights {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+
+  margin-top: 1rem;
+  margin-bottom: 1.4rem;
+}
+
+.decision-insight {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.decision-insight strong {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #16a34a;
+  margin-bottom: 0.35rem;
+}
+
+.decision-insight span {
+  color: #64748b;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+/* =====================================
+   TABLE
+===================================== */
+
+.decision-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.decision-table thead tr {
+  background: #f9fafb;
+}
+
+.decision-table th {
+  padding: 1rem;
+  text-align: left;
+  color: #6b7280;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  border-bottom: 1px solid #e5e7eb;
+  font-weight: 700;
+}
+
+.decision-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #f1f5f9;
+  color: #111827;
+}
+
+.decision-table tbody tr:hover {
+  background: #f8fafc;
+}
+
+.decision-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* =====================================
+   RESPONSIVE
+===================================== */
+
+@media (max-width: 768px) {
+
+  .decision-engine-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .decision-insights {
+    grid-template-columns: 1fr;
+  }
+
+}

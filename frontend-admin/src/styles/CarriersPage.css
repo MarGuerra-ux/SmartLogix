@@ -1,0 +1,324 @@
+/* ===========================
+   CarriersPage.css — SmartLogix Light
+=========================== */
+
+.carriers-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  text-align: left;
+}
+
+/* HEADER */
+
+.page-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.page-header h1 {
+  font-size: 2rem;
+  margin: 0;
+  color: #111827;
+}
+
+.page-header p {
+  color: #6b7280;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* KPI CARDS */
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.stat-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 22px;
+  padding: 1.2rem 1.4rem;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+.stat-card h3 {
+  margin: 0;
+  color: #6b7280;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.stat-card span {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: #111827;
+}
+
+/* INTEGRATION CARD */
+
+.integration-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 24px;
+  padding: 1.4rem;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+.integration-card h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #111827;
+  font-size: 1.15rem;
+}
+
+.integration-status {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  background: #22c55e;
+  border-radius: 999px;
+}
+
+.integration-card p {
+  margin: 0;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+/* TABLE CARDS */
+
+.table-container,
+.quotes-card,
+.recent-shipments {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+.quotes-card,
+.recent-shipments {
+  padding: 1.2rem;
+}
+
+.quotes-card h2,
+.recent-shipments h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #111827;
+}
+
+/* TABLES */
+
+.table-container table,
+.quotes-card table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-container thead tr,
+.quotes-card thead tr {
+  background: #f9fafb;
+}
+
+.table-container th,
+.quotes-card th {
+  padding: 1rem 1.3rem;
+  text-align: left;
+  font-size: 0.8rem;
+  color: #6b7280;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.table-container td,
+.quotes-card td {
+  padding: 1rem 1.3rem;
+  color: #111827;
+  font-size: 0.92rem;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.table-container tbody tr:hover,
+.quotes-card tbody tr:hover {
+  background: #f9fafb;
+}
+
+.table-container tbody tr:last-child td,
+.quotes-card tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* RECENT SHIPMENTS */
+
+.shipment-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+
+  padding: 1rem 0;
+
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.shipment-item:last-child {
+  border-bottom: none;
+}
+
+.shipment-item strong {
+  color: #111827;
+}
+
+.shipment-item span {
+  color: #6b7280;
+  font-size: 0.92rem;
+}
+
+/* FUTURE POLICY CARD */
+
+.policy-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 24px;
+  padding: 1.4rem;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1200px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .shipment-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .table-container,
+  .quotes-card {
+    overflow-x: auto;
+  }
+}
+
+/* ======================================
+   CARRIER DASHBOARD GRID
+====================================== */
+
+.carrier-main-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.carrier-left-column,
+.carrier-right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ======================================
+   GENERIC DASHBOARD CARDS
+====================================== */
+
+.integration-card,
+.carriers-table-card,
+.quotes-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 24px;
+  padding: 1.4rem;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+.carriers-table-card h2,
+.quotes-card h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+/* ======================================
+   COURIERS TABLE
+====================================== */
+
+.carriers-table-card table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.carriers-table-card thead tr {
+  background: #f9fafb;
+}
+
+.carriers-table-card th {
+  padding: 1rem;
+  text-align: left;
+  font-size: 0.8rem;
+  color: #6b7280;
+  text-transform: uppercase;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.carriers-table-card td {
+  padding: 1rem;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.carriers-table-card tbody tr:hover {
+  background: #f9fafb;
+}
+
+.carriers-table-card tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ======================================
+   RIGHT COLUMN CARDS
+====================================== */
+
+.carrier-right-column > * {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 24px;
+  padding: 1.2rem;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+/* ======================================
+   RESPONSIVE
+====================================== */
+
+@media (max-width: 1200px) {
+
+  .carrier-main-grid {
+    grid-template-columns: 1fr;
+  }
+
+}

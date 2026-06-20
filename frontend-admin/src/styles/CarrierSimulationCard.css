@@ -1,0 +1,74 @@
+/* ===========================
+   CarrierSimulationCard.css
+=========================== */
+
+.simulation-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 24px;
+  padding: 1.4rem;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+}
+
+.simulation-card h2 {
+  margin: 0 0 1.2rem 0;
+  color: #111827;
+  font-size: 1.4rem;
+}
+
+.simulation-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0.9rem 1rem;
+
+  background: #f8fafc;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 14px;
+
+  margin-bottom: 0.8rem;
+}
+
+.simulation-block span {
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.simulation-block strong {
+  color: #111827;
+  font-size: 1rem;
+}
+
+.simulation-metrics {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.8rem;
+
+  margin-top: 1rem;
+}
+
+.simulation-metrics div {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 1rem;
+}
+
+.simulation-metrics strong {
+  display: block;
+
+  font-size: 1.3rem;
+  font-weight: 800;
+
+  color: #16a34a;
+
+  margin-bottom: 0.3rem;
+}
+
+.simulation-metrics span {
+  color: #64748b;
+  font-size: 0.85rem;
+}

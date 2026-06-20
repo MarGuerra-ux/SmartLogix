@@ -1,0 +1,69 @@
+/* ===========================
+   CarrierRankingCard.css
+=========================== */
+
+.ranking-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 24px;
+  padding: 1.4rem;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+}
+
+.ranking-card h2 {
+  margin: 0 0 1.2rem 0;
+  color: #111827;
+  font-size: 1.4rem;
+}
+
+.ranking-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 1rem;
+
+  border-radius: 16px;
+
+  transition: all 0.25s ease;
+}
+
+.ranking-item:hover {
+  background: #f8fafc;
+}
+
+.ranking-item:not(:last-child) {
+  margin-bottom: 0.75rem;
+}
+
+.ranking-item strong {
+  display: block;
+  color: #111827;
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.ranking-item p {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.88rem;
+}
+
+.ranking-score {
+  min-width: 60px;
+
+  text-align: center;
+
+  font-size: 1.4rem;
+  font-weight: 800;
+
+  color: #2563eb;
+
+  background: #eff6ff;
+
+  border: 1px solid #bfdbfe;
+
+  border-radius: 12px;
+
+  padding: 0.65rem 0.85rem;
+}

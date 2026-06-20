@@ -1,0 +1,80 @@
+.tracking-status-modal {
+  width: 100%;
+  max-width: 950px;
+
+  background: white;
+
+  border-radius: 24px;
+
+  padding: 24px;
+
+  box-shadow:
+    0 25px 70px rgba(15, 23, 42, 0.18);
+}
+
+.tracking-status-header {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-bottom: 20px;
+}
+
+.tracking-status-table {
+  width: 100%;
+
+  border-collapse: collapse;
+}
+
+.tracking-status-table thead {
+  background: #f8fafc;
+}
+
+.tracking-status-table th {
+  padding: 14px;
+
+  text-align: left;
+
+  color: #6b7280;
+
+  font-size: 0.8rem;
+
+  text-transform: uppercase;
+
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.tracking-status-table td {
+  padding: 14px;
+
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.tracking-status-table tbody tr {
+  cursor: pointer;
+
+  transition: 0.15s ease;
+}
+
+.tracking-status-table tbody tr:hover {
+  background: #f9fafb;
+}
+
+.tracking-empty-state {
+  text-align: center;
+
+  padding: 50px;
+
+  color: #9ca3af;
+}
+
+.tracking-status-table tbody tr {
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.tracking-status-table tbody tr:hover {
+  background: #f8fafc;
+}

@@ -26,7 +26,9 @@ function MainLayout() {
       onClick={() => toggleSection(id)}
     >
       <span>{title}</span>
-      <span className="section-arrow">{openSections[id] ? "▼" : "▶"}</span>
+      <span className="section-arrow">
+        {openSections[id] ? "▼" : "▶"}
+      </span>
     </button>
   );
 
@@ -43,61 +45,131 @@ function MainLayout() {
         </div>
 
         <nav className="sidebar-nav">
-          <SectionButton id="general" title="General" />
+
+          <SectionButton
+            id="general"
+            title="General"
+          />
 
           {openSections.general && (
             <div className="sidebar-group">
-              <NavLink to="/dashboard">🏠 Dashboard</NavLink>
-              <NavLink to="/activity">🔔 Actividad</NavLink>
+              <NavLink to="/dashboard">
+                🏠 Dashboard
+              </NavLink>
+
+              <NavLink to="/activity">
+                🔔 Actividad
+              </NavLink>
             </div>
           )}
 
-          <SectionButton id="operaciones" title="Operaciones" />
+          <SectionButton
+            id="operaciones"
+            title="Operaciones"
+          />
 
           {openSections.operaciones && (
             <div className="sidebar-group">
-              <NavLink to="/orders">🧾 Pedidos</NavLink>
-              <NavLink to="/shipping">🚚 Envíos</NavLink>
-              <NavLink to="/inventory">📦 Inventarios</NavLink>
-              <NavLink to="/products">🏷️ Productos</NavLink>
+
+              <NavLink to="/orders">
+                🧾 Pedidos
+              </NavLink>
+
+              <NavLink to="/shipping">
+                🚚 Envíos
+              </NavLink>
+
+              <NavLink to="/tracking">
+                📍 Seguimiento
+              </NavLink>
+
+              <NavLink to="/inventory">
+                📦 Inventarios
+              </NavLink>
+
+              <NavLink to="/products">
+                🏷️ Productos
+              </NavLink>
+
+              <NavLink to="/carriers">
+                🚛 Transportistas
+              </NavLink>
+
+              <NavLink to="/automation-flow">
+                ⚙️ Flujo Automatizado
+              </NavLink>
+
             </div>
           )}
 
-          <SectionButton id="clientes" title="Clientes" />
+          <SectionButton
+            id="clientes"
+            title="Clientes"
+          />
 
           {openSections.clientes && (
             <div className="sidebar-group">
-              <NavLink to="/clients">👥 Clientes</NavLink>
+              <NavLink to="/clients">
+                👥 Clientes
+              </NavLink>
             </div>
           )}
 
-          <SectionButton id="finanzas" title="Finanzas" />
+          <SectionButton
+            id="finanzas"
+            title="Finanzas"
+          />
 
           {openSections.finanzas && (
             <div className="sidebar-group">
-              <NavLink to="/sales">💰 Ventas</NavLink>
-              <NavLink to="/daily-cash">🏦 Caja diaria</NavLink>
-              <NavLink to="/refunds">💸 Reembolsos</NavLink>
+              <NavLink to="/sales">
+                💰 Ventas
+              </NavLink>
+
+              <NavLink to="/daily-cash">
+                🏦 Caja diaria
+              </NavLink>
+
+              <NavLink to="/refunds">
+                💸 Reembolsos
+              </NavLink>
             </div>
           )}
 
-          <SectionButton id="analiticas" title="Analíticas" />
+          <SectionButton
+            id="analiticas"
+            title="Analíticas"
+          />
 
           {openSections.analiticas && (
             <div className="sidebar-group">
-              <NavLink to="/metrics">📊 Métricas</NavLink>
-              <NavLink to="/top-sales">🏆 Top ventas</NavLink>
+              <NavLink to="/metrics">
+                📊 Métricas
+              </NavLink>
+
+              <NavLink to="/top-sales">
+                🏆 Top ventas
+              </NavLink>
             </div>
           )}
 
-          <SectionButton id="sistema" title="Sistema" />
+          <SectionButton
+            id="sistema"
+            title="Sistema"
+          />
 
           {openSections.sistema && (
             <div className="sidebar-group">
-              <NavLink to="/users">👤 Usuarios</NavLink>
-              <NavLink to="/settings">⚙️ Configuración</NavLink>
+              <NavLink to="/users">
+                👤 Usuarios
+              </NavLink>
+
+              <NavLink to="/settings">
+                ⚙️ Configuración
+              </NavLink>
             </div>
           )}
+
         </nav>
       </aside>
 
@@ -105,7 +177,9 @@ function MainLayout() {
         <header className="topbar">
           <div>
             <h1>Panel Administrativo</h1>
-            <p>Gestión logística para eCommerce</p>
+            <p>
+              Gestión logística para eCommerce
+            </p>
           </div>
 
           <div className="user-box">

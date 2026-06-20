@@ -1,0 +1,83 @@
+/* ===========================
+   SystemHealthCard.css
+=========================== */
+
+.system-health-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 24px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+}
+
+.health-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.health-header h2 {
+  margin: 0;
+  font-size: 1.6rem;
+  color: #111827;
+}
+
+.health-status {
+  background: #dcfce7;
+  color: #15803d;
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  font-weight: 700;
+  border: 1px solid #bbf7d0;
+}
+
+.health-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.health-item {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  padding: 1.2rem;
+  text-align: center;
+  transition: all 0.25s ease;
+}
+
+.health-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+}
+
+.health-item strong {
+  display: block;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 0.35rem;
+}
+
+.health-item span {
+  color: #64748b;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+
+  .health-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  .health-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
