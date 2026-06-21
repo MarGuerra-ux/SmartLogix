@@ -1,0 +1,90 @@
+/* ==========================================
+   GOOGLE MAP
+   SmartLogix
+========================================== */
+
+.google-map-container{
+
+    width:100%;
+
+    position:relative;
+
+    overflow:hidden;
+
+    border-radius:22px;
+
+    border:1px solid #e5e7eb;
+
+    background:#ffffff;
+
+    box-shadow:0 8px 30px rgba(15,23,42,.08);
+
+}
+
+.google-map-container>div{
+
+    width:100%;
+
+    height:100%;
+
+}
+
+.google-map-container .gm-style{
+
+    border-radius:22px;
+
+}
+
+.google-map-container iframe{
+
+    border:none;
+
+}
+
+.google-map-container img{
+
+    max-width:none;
+
+}
+
+.google-map-loading{
+
+    width:100%;
+
+    height:100%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    color:#64748b;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    background:#f8fafc;
+
+}
+
+.google-map-error{
+
+    width:100%;
+
+    height:100%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    color:#dc2626;
+
+    font-weight:700;
+
+    background:#fef2f2;
+
+}

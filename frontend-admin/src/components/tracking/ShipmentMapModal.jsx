@@ -1,102 +1,223 @@
+import ShipmentMap from "../maps/ShipmentMap";
+
 import "../../styles/ShipmentMapModal.css";
 
 export default function ShipmentMapModal({
-  shipment,
-  onClose
+
+    shipment,
+
+    onClose
+
 }) {
 
-  if (!shipment) return null;
+    if (!shipment) return null;
 
-  return (
-    <div className="modal-overlay">
+    return (
 
-      <div className="shipment-map-modal">
+        <div className="modal-overlay">
 
-        <div className="shipment-map-header">
+            <div className="shipment-map-modal">
 
-          <h2>
-            🗺️ Ubicación del Envío
-          </h2>
+                <div className="shipment-map-header">
 
-          <button
-            className="modal-close-btn"
-            onClick={onClose}
-          >
-            ✕
-          </button>
+                    <div>
 
-        </div>
+                        <h2>
 
-        <div className="mock-map-container">
+                            🛰 Seguimiento en Tiempo Real
 
-          <div className="mock-map">
+                        </h2>
 
-            <div className="mock-marker">
-              📍
+                        <p>
+
+                            SmartLogix Tracking Center
+
+                        </p>
+
+                    </div>
+
+                    <button
+
+                        className="modal-close-btn"
+
+                        onClick={onClose}
+
+                    >
+
+                        ✕
+
+                    </button>
+
+                </div>
+
+                <div className="shipment-status-bar">
+
+                    <div className="gps-status">
+
+                        <span className="gps-dot"></span>
+
+                        GPS Activo
+
+                    </div>
+
+                    <div>
+
+                        Última actualización
+
+                        <strong>
+
+                            Hace unos segundos
+
+                        </strong>
+
+                    </div>
+
+                </div>
+
+                <ShipmentMap
+
+                    shipment={shipment}
+
+                />
+
+                <div className="shipment-info-grid">
+
+                    <div className="info-card">
+
+                        <span>
+
+                            🚚 Courier
+
+                        </span>
+
+                        <strong>
+
+                            {shipment.carrier}
+
+                        </strong>
+
+                    </div>
+
+                    <div className="info-card">
+
+                        <span>
+
+                            📦 Tracking
+
+                        </span>
+
+                        <strong>
+
+                            {shipment.trackingNumber}
+
+                        </strong>
+
+                    </div>
+
+                    <div className="info-card">
+
+                        <span>
+
+                            📍 Destino
+
+                        </span>
+
+                        <strong>
+
+                            {shipment.commune}
+
+                        </strong>
+
+                    </div>
+
+                    <div className="info-card">
+
+                        <span>
+
+                            🚛 Estado
+
+                        </span>
+
+                        <strong>
+
+                            {shipment.status}
+
+                        </strong>
+
+                    </div>
+
+                    <div className="info-card">
+
+                        <span>
+
+                            ⏱ ETA
+
+                        </span>
+
+                        <strong>
+
+                            18 min
+
+                        </strong>
+
+                    </div>
+
+                    <div className="info-card">
+
+                        <span>
+
+                            ⚡ Velocidad
+
+                        </span>
+
+                        <strong>
+
+                            42 km/h
+
+                        </strong>
+
+                    </div>
+
+                </div>
+
+                <div className="shipment-timeline-mini">
+
+                    <div className="timeline-node active">
+
+                        Pedido
+
+                    </div>
+
+                    <div className="timeline-line"></div>
+
+                    <div className="timeline-node active">
+
+                        Centro Logístico
+
+                    </div>
+
+                    <div className="timeline-line"></div>
+
+                    <div className="timeline-node active">
+
+                        En Ruta
+
+                    </div>
+
+                    <div className="timeline-line"></div>
+
+                    <div className="timeline-node">
+
+                        Entregado
+
+                    </div>
+
+                </div>
+
             </div>
 
-            <span>
-              Mapa Mock
-            </span>
-
-          </div>
-
         </div>
 
-        <div className="map-info">
+    );
 
-          <p>
-            Courier:
-            <strong>
-              {" "}
-              {shipment.carrier}
-            </strong>
-          </p>
-
-          <p>
-            Tracking:
-            <strong>
-              {" "}
-              {shipment.trackingNumber}
-            </strong>
-          </p>
-
-          <p>
-            Destino:
-            <strong>
-              {" "}
-              {shipment.commune}
-            </strong>
-          </p>
-
-        </div>
-
-        <div className="future-map-note">
-
-          <strong>
-            Próxima Integración:
-          </strong>
-
-          Google Maps API +
-          seguimiento en tiempo real.
-
-        </div>
-
-        {/*
-        FUTURA IMPLEMENTACIÓN
-
-        <GoogleMap
-          center={{
-            lat: shipment.latitude,
-            lng: shipment.longitude
-          }}
-          zoom={14}
-        />
-
-        */}
-
-      </div>
-
-    </div>
-  );
 }
